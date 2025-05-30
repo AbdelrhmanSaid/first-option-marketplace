@@ -1,7 +1,3 @@
 {
-    "recommendations": [
-        "bmewburn.vscode-intelephense-client",
-        "shufo.vscode-blade-formatter",
-        "laravel.vscode-laravel"
-    ]
+    "recommendations": ["bmewburn.vscode-intelephense-client", "shufo.vscode-blade-formatter", "laravel.vscode-laravel"]
 }
