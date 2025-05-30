@@ -1,0 +1,10 @@
+@media screen and (min-width: 992px) {
+    .dashboard-sidebar .navbar-brand {
+        min-height: 10rem;
+        margin-inline: 1.5rem;
+    }
+
+    .dashboard-sidebar .nav-item .nav-link {
+        border-radius: 0 !important;
+    }
+}
