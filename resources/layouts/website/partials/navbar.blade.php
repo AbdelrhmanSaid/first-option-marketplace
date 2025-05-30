@@ -58,6 +58,10 @@
                             <a href="#" class="dropdown-item" onclick="event.preventDefault(); $('#logout').submit()">
                                 <span class="dropdown-item-title">{{ __('Logout') }}</span>
                             </a>
+
+                            <a href="{{ route('website.publisher.index') }}" class="dropdown-item">
+                                <span class="dropdown-item-title">{{ __('Publisher Corner') }}</span>
+                            </a>
                         @else
                             <a href="{{ route('website.login') }}" class="dropdown-item">
                                 <span class="dropdown-item-title">{{ __('Login') }}</span>

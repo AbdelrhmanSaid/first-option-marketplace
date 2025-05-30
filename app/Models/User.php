@@ -31,6 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_name',
         'email',
         'password',
+        'publisher',
         'last_login_at',
     ];
 
@@ -52,6 +53,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'publisher' => 'boolean',
         'last_login_at' => 'datetime',
     ];
 
