@@ -1,7 +1,7 @@
 <x-layouts::website.auth :title="__('Register as a publisher')">
     <x-status />
 
-    <x-form class="card card-md" :action="route('website.register.store')" method="POST">
+    <x-form class="card card-md" :action="route('website.publisher.register.store')" method="POST">
         <div class="card-body">
             <div class="text-center mb-4">
                 <h2 class="h2 mb-2">
