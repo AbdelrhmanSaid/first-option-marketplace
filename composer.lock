@@ -860,16 +860,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "9.0.5",
+            "version": "9.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "8c2c1d63c55ce1100701b7a9e760e21421d21453"
+                "reference": "ff98e036c68ff7b63b0badf5d1044413f745d05c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/8c2c1d63c55ce1100701b7a9e760e21421d21453",
-                "reference": "8c2c1d63c55ce1100701b7a9e760e21421d21453",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/ff98e036c68ff7b63b0badf5d1044413f745d05c",
+                "reference": "ff98e036c68ff7b63b0badf5d1044413f745d05c",
                 "shasum": ""
             },
             "require": {
@@ -932,7 +932,7 @@
                 "issues": "https://github.com/giggsey/libphonenumber-for-php/issues",
                 "source": "https://github.com/giggsey/libphonenumber-for-php"
             },
-            "time": "2025-05-08T07:09:59+00:00"
+            "time": "2025-05-29T10:03:29+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -10670,12 +10670,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
