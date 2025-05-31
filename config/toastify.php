@@ -36,29 +36,29 @@ return [
         ],
         'error' => [
             'style' => [
-                'color' => 'var(--tblr-danger)',
-                'background' => 'var(--tblr-danger-lt)',
+                'color' => 'var(--tblr-white)',
+                'background' => 'var(--tblr-danger)',
                 'border' => '1px solid var(--tblr-danger)',
             ],
         ],
         'success' => [
             'style' => [
-                'color' => 'var(--tblr-success)',
-                'background' => 'var(--tblr-success-lt)',
+                'color' => 'var(--tblr-white)',
+                'background' => 'var(--tblr-success)',
                 'border' => '1px solid var(--tblr-success)',
             ],
         ],
         'info' => [
             'style' => [
-                'color' => 'var(--tblr-info)',
-                'background' => 'var(--tblr-info-lt)',
+                'color' => 'var(--tblr-white)',
+                'background' => 'var(--tblr-info)',
                 'border' => '1px solid var(--tblr-info)',
             ],
         ],
         'warning' => [
             'style' => [
-                'color' => 'var(--tblr-warning)',
-                'background' => 'var(--tblr-warning-lt)',
+                'color' => 'var(--tblr-white)',
+                'background' => 'var(--tblr-warning)',
                 'border' => '1px solid var(--tblr-warning)',
             ],
         ],
