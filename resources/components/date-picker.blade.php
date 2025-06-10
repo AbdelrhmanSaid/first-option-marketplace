@@ -2,11 +2,7 @@
     <x-label :title="$title" :for="$id" :required="$required" />
 @endif
 
-@if ($hint)
-    <x-hint>{{ $hint }}</x-hint>
-@endif
-
-<div class="col input-group input-group-flat has-validation">
+<div class="col input-group input-group-flat">
     <input type="text" id="{{ $id }}" autocomplete="off"
         {{ $attributes->class(['form-control'])->merge(['init' => 'litepicker']) }} />
 
@@ -14,6 +10,10 @@
         <x-icon icon="fa fa-calendar-alt" />
     </span>
 </div>
+
+@if ($hint)
+    <x-hint class="mt-1">{{ $hint }}</x-hint>
+@endif
 
 @pushOnce('scripts')
     <script src="{{ hashed_asset('/vendor/litepicker/litepicker.min.js') }}"></script>

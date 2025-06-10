@@ -90,8 +90,8 @@ return [
         'app_logo_dark' => 'assets/images/logo-dark.svg',
         'app_logo_light' => 'assets/images/logo-light.svg',
         'app_name' => [
-            'en' => 'First Options Marketplace',
-            'ar' => 'متجر First Options',
+            'en' => 'Dashboard',
+            'ar' => 'لوحة التحكم',
         ],
         'website_locales' => ['en', 'ar'],
         'dashboard_locales' => ['en', 'ar'],

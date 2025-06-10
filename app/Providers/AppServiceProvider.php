@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Language;
 use Exception;
 use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -42,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
         $this->configureDestructiveCommands();
 
         $this->configureValidationRules();
+        $this->configureJsonCast();
     }
 
     /**
@@ -131,6 +133,28 @@ class AppServiceProvider extends ServiceProvider
 
         Validator::extend('captcha', function ($attribute, $value, $parameters) {
             return (new \App\Rules\Captcha(...$parameters))->passes($attribute, $value);
+        });
+    }
+
+    /**
+     * Configure the JSON cast.
+     */
+    protected function configureJsonCast(): void
+    {
+        Json::encodeUsing(function ($value) {
+            if (is_array($value)) {
+                return json_encode($value, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            }
+
+            return $value;
+        });
+
+        Json::decodeUsing(function ($value) {
+            if (is_string($value)) {
+                return json_decode($value, true, 512, JSON_THROW_ON_ERROR);
+            }
+
+            return $value;
         });
     }
 }

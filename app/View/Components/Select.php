@@ -27,6 +27,7 @@ class Select extends Component
         public array|Collection $options = [],
         public array|string|null $value = [],
         public bool $tom = true,
+        public bool $floating = false,
 
         // Query related attributes.
         public EloquentBuilder|QueryBuilder|string|null $query = null,
@@ -68,6 +69,11 @@ class Select extends Component
         // If template doesn't start with `templates.select`, we will prefix it.
         if ($this->template && ! str_starts_with($this->template, 'templates.select')) {
             $this->template = 'templates.select.' . $this->template;
+        }
+
+        // Disable tom select if floating is true.
+        if ($this->floating) {
+            $this->tom = false;
         }
 
         return function (): View {

@@ -10,6 +10,7 @@
         "php": "^8.2",
         "carlos-meneses/laravel-mpdf": "^2.1",
         "giggsey/libphonenumber-for-php": "^9.0",
+        "intervention/image-laravel": "^1.5",
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10",
@@ -19,6 +20,7 @@
         "redot/laravel-lang-extractor": "^1.0",
         "redot/laravel-toastify": "^1.0",
         "redot/sidebar": "^1.0",
+        "spatie/laravel-image-optimizer": "^1.8",
         "spatie/laravel-permission": "^6.15",
         "stichoza/google-translate-php": "^5.2"
     },

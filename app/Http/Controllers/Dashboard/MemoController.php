@@ -33,6 +33,7 @@ class MemoController extends Controller
             'icon' => ['nullable', 'string', 'max:255'],
             'date' => ['nullable', 'date'],
             'content' => ['nullable', 'string'],
+            'attachments' => ['nullable', 'json'],
         ]);
 
         // Append the authenticated admin id to the memo
@@ -73,6 +74,7 @@ class MemoController extends Controller
             'icon' => ['nullable', 'string', 'max:255'],
             'date' => ['nullable', 'date'],
             'content' => ['nullable', 'string'],
+            'attachments' => ['nullable', 'json'],
         ]);
 
         $memo->update($validated);

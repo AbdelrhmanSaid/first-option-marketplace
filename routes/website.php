@@ -18,15 +18,6 @@ Route::get('r/{shortenedUrl?}', [\App\Http\Controllers\Website\ShortenedUrlContr
 Route::middleware('auth:users')->group(function () {
     Route::get('profile', [\App\Http\Controllers\Website\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [\App\Http\Controllers\Website\ProfileController::class, 'update'])->name('profile.update');
-
-    Route::prefix('publisher')->as('publisher.')->group(function () {
-        Route::get('register', [\App\Http\Controllers\Website\PublisherRegisterController::class, 'create'])->name('register');
-        Route::post('register', [\App\Http\Controllers\Website\PublisherRegisterController::class, 'store'])->name('register.store');
-
-        Route::middleware('publisher')->group(function () {
-            Route::get('/', [\App\Http\Controllers\Website\PublisherController::class, 'index'])->name('index');
-        });
-    });
 });
 
 /*

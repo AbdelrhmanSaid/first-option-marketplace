@@ -17,10 +17,6 @@
                     @if ($title)
                         <x-label :title="$title" :for="$id" :required="$required" />
                     @endif
-
-                    @if ($hint)
-                        <x-hint>{{ $hint }}</x-hint>
-                    @endif
                 </div>
 
                 <div class="btn-list gap-1">
@@ -46,6 +42,10 @@
         @endif
     </div>
 </div>
+
+@if ($hint)
+    <x-hint class="mt-1">{{ $hint }}</x-hint>
+@endif
 
 @pushOnce('scripts')
     <script src="{{ hashed_asset('assets/plugins/redot-repeater.js') }}"></script>

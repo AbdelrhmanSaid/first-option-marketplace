@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 test('profile page is displayed', function () {
     $user = User::factory()->create();
@@ -33,4 +34,7 @@ test('user can update password', function () {
     ]);
 
     $response->assertSessionHasNoErrors();
+
+    $user->refresh();
+    $this->assertTrue(Hash::check('new-password', $user->password));
 });

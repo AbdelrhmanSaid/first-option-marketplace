@@ -78,6 +78,7 @@
                     buttons: {
                         close: {
                             text: '{{ __('Close') }}',
+                            btnClass: 'btn-secondary',
                         },
                         confirm: {
                             text: '{{ __('Download') }}',

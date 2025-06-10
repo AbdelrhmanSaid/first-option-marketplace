@@ -34,9 +34,7 @@ jconfirm.defaults = {
     animateFromElement: false,
 
     buttons: {
-        confirm: {
-            btnClass: 'btn-primary',
-        },
+        // ...
     },
 
     // ...

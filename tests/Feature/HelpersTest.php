@@ -16,7 +16,7 @@ test('setting function return the specified setting value', function () {
     $this->assertEquals('bar', setting('foo'));
 });
 
-test('trigger_dependecies_build function delete the dist directories and lock file', function () {
+test('trigger_dependencies_build function deletes the dist directories and lock file', function () {
     File::shouldReceive('deleteDirectories')->with(public_path('assets/dist'))->once();
     File::shouldReceive('delete')->with(public_path('assets/dist/lock'))->once();
 

@@ -2,10 +2,6 @@
     <x-label :title="$title" :for="$id" :required="$required" />
 @endif
 
-@if ($hint)
-    <x-hint>{{ $hint }}</x-hint>
-@endif
-
 <div class="row g-2 w-100" iconpicker-wrapper>
     <div class="col input-group">
         <span class="input-group-text text-body">
@@ -22,6 +18,10 @@
         </button>
     </div>
 </div>
+
+@if ($hint)
+    <x-hint class="mt-1">{{ $hint }}</x-hint>
+@endif
 
 @pushOnce('templates')
     <template for="icon-picker">

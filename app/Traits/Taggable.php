@@ -45,10 +45,10 @@ trait Taggable
      */
     public function attachTag(string ...$tags): void
     {
-        $tags = $this->{static::$tagsAttribute} ?? [];
-        $tags = array_merge($tags, $tags);
+        $currentTags = $this->{static::$tagsAttribute} ?? [];
+        $updatedTags = array_merge($currentTags, $tags);
 
-        $this->syncTags(array_unique($tags));
+        $this->syncTags(array_unique($updatedTags));
     }
 
     /**
@@ -56,10 +56,10 @@ trait Taggable
      */
     public function detachTag(string ...$tags): void
     {
-        $tags = $this->{static::$tagsAttribute} ?? [];
-        $tags = array_diff($tags, $tags);
+        $currentTags = $this->{static::$tagsAttribute} ?? [];
+        $updatedTags = array_diff($currentTags, $tags);
 
-        $this->syncTags(array_values($tags));
+        $this->syncTags(array_values($updatedTags));
     }
 
     /**

@@ -99,9 +99,11 @@ return (selector) => {
             buttons: {
                 cancel: {
                     text: __('Cancel'),
+                    btnClass: 'btn-secondary',
                 },
                 confirm: {
                     text: __('Select'),
+                    btnClass: 'btn-primary',
                     action: function () {
                         saveIconPickerSelection($input, this.$content);
                     },

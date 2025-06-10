@@ -28,6 +28,7 @@ class Input extends Component
         public ?string $append = null,
         public string $type = 'text',
         public bool $flat = false,
+        public bool $floating = false,
     ) {}
 
     /**

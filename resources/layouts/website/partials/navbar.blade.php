@@ -67,12 +67,6 @@
                                 <span class="dropdown-item-title">{{ __('Register') }}</span>
                             </a>
                         @endauth
-
-                        <div class="dropdown-divider"></div>
-
-                        <a href="{{ route('website.publisher.index') }}" class="dropdown-item">
-                            <span class="dropdown-item-title">{{ __('Publisher Corner') }}</span>
-                        </a>
                     </div>
                 </li>
             </ul>

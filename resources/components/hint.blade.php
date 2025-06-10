@@ -1,3 +1,3 @@
-<p {{ $attributes->merge(['class' => 'form-hint']) }}>
+<small {{ $attributes->merge(['class' => 'form-hint']) }}>
     {{ $slot }}
-</p>
+</small>

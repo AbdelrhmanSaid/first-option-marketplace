@@ -21,6 +21,7 @@ class Memo extends Model
         'icon',
         'date',
         'content',
+        'attachments',
     ];
 
     /**
@@ -30,6 +31,7 @@ class Memo extends Model
      */
     protected $casts = [
         'date' => 'datetime',
+        'attachments' => 'array',
     ];
 
     /**

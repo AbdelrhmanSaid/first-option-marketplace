@@ -85,7 +85,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth' => \App\Http\Middleware\Authenticate::class,
             'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
             'verified' => \App\Http\Middleware\Website\EnsureEmailIsVerified::class,
-            'publisher' => \App\Http\Middleware\Publisher::class,
+            'image.optimize' => \Spatie\LaravelImageOptimizer\Middlewares\OptimizeImages::class,
         ]);
     })
 

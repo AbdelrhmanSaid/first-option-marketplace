@@ -2,10 +2,6 @@
     <x-label :title="$title" :for="$id" :required="$required" />
 @endif
 
-@if ($hint)
-    <x-hint>{{ $hint }}</x-hint>
-@endif
-
 <div id="{{ $id }}">
     @foreach ($options as $key => $label)
         <label @class(['form-check', 'form-check-inline' => $inline])>
@@ -17,3 +13,7 @@
         </label>
     @endforeach
 </div>
+
+@if ($hint)
+    <x-hint class="mt-1">{{ $hint }}</x-hint>
+@endif

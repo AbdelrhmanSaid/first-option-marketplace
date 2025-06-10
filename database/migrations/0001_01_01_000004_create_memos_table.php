@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('icon')->nullable()->default('fa fa-sticky-note');
             $table->timestamp('date')->nullable();
             $table->text('content')->nullable();
+            $table->json('attachments')->nullable();
             $table->timestamps();
         });
     }

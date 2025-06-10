@@ -22,6 +22,10 @@
             <div class="mb-3">
                 <x-rich-editor name="content" :title="__('Content')" :value="$memo->content" />
             </div>
+
+            <div class="mb-3">
+                <x-uploader name="attachments" :title="__('Attachments')" :value="$memo->attachments" directory="memos" />
+            </div>
         </div>
 
         <div class="card-footer text-end">

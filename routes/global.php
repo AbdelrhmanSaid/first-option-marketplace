@@ -16,3 +16,5 @@ Route::post('tinymce/upload', [\App\Http\Controllers\TinymceController::class, '
 
 Route::get('tomselect/search', [\App\Http\Controllers\SelectController::class, 'index'])->name('select.search');
 Route::get('tomselect/fetch', [\App\Http\Controllers\SelectController::class, 'show'])->name('select.fetch');
+
+Route::post('uploader/upload', [\App\Http\Controllers\UploaderController::class, 'store'])->name('uploader.upload');

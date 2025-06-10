@@ -81,6 +81,10 @@ input[type='number']::-webkit-inner-spin-button {
     box-shadow: 0 0 0 0.25rem rgba(var(--tblr-primary-rgb), 0.25);
 }
 
+.form-floating .form-label {
+    font-weight: normal;
+}
+
 .has-invalid-feedback .invalid-feedback {
     display: block;
 }
@@ -243,6 +247,10 @@ select.is-invalid ~ .ts-wrapper {
 
 .jconfirm.jconfirm-material .jconfirm-box .jconfirm-content {
     color: rgba(var(--tblr-body-color-rgb), 0.8) !important;
+}
+
+.jconfirm.jconfirm-material .jconfirm-box .jconfirm-buttons {
+    text-align: end;
 }
 
 .jconfirm.jconfirm-material .jconfirm-box .jconfirm-buttons button {

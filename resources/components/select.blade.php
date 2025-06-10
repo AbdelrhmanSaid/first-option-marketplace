@@ -1,23 +1,41 @@
-@if ($title)
+@if ($title && $floating === false)
     <x-label :title="$title" :for="$id" :required="$required" />
 @endif
 
-@if ($hint)
-    <x-hint>{{ $hint }}</x-hint>
+@if ($floating)
+    <div class="form-floating">
+        <select id="{{ $id }}" {{ $attributes->class(['form-select']) }}>
+            @foreach ($options as $key => $label)
+                <option value="{{ $key }}" @selected(in_array($key, $value))>{{ $label }}</option>
+            @endforeach
+
+            {{ $slot }}
+        </select>
+
+        @if ($title)
+            <x-label :title="$title" :for="$id" :required="$required" />
+        @endif
+    </div>
+@else
+    <select id="{{ $id }}" {{ $attributes }}>
+        @foreach ($options as $key => $label)
+            <option value="{{ $key }}" @selected(in_array($key, $value))>{{ $label }}</option>
+        @endforeach
+
+        {{ $slot }}
+    </select>
 @endif
 
-<select id="{{ $id }}" {{ $attributes }}>
-    @foreach ($options as $key => $label)
-        <option value="{{ $key }}" @selected(in_array($key, $value))>{{ $label }}</option>
-    @endforeach
+@if ($hint)
+    <x-hint class="mt-1">{{ $hint }}</x-hint>
+@endif
 
-    {{ $slot }}
-</select>
+@if ($tom)
+    @pushOnce('styles')
+        <link rel="stylesheet" href="{{ hashed_asset('/vendor/tom-select/tom-select.min.css') }}">
+    @endPushOnce
 
-@pushOnce('styles')
-    <link rel="stylesheet" href="{{ hashed_asset('/vendor/tom-select/tom-select.min.css') }}">
-@endPushOnce
-
-@pushOnce('scripts')
-    <script src="{{ hashed_asset('/vendor/tom-select/tom-select.complete.min.js') }}"></script>
-@endPushOnce
+    @pushOnce('scripts')
+        <script src="{{ hashed_asset('/vendor/tom-select/tom-select.complete.min.js') }}"></script>
+    @endPushOnce
+@endif

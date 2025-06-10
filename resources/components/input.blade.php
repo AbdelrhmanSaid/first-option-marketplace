@@ -1,23 +1,29 @@
-@if ($title)
+@if ($title && $floating === false)
     <x-label :title="$title" :for="$id" :required="$required" />
 @endif
 
-@if ($hint)
-    <x-hint>{{ $hint }}</x-hint>
-@endif
-
-<div input-wrapper @class([
+<div @class([
     'col',
     'w-100',
     'input-group' => $isInputGroup,
     'input-group-flat' => $isInputGroup && $flat,
-    'has-validation' => true,
 ])>
     @if ($prepend)
         <span class="input-group-text">{{ $prepend }}</span>
     @endif
 
-    <input type="{{ $type }}" id="{{ $id }}" {{ $attributes->class(['form-control']) }} />
+    @if ($floating)
+        <div class="form-floating">
+            <input type="{{ $type }}" id="{{ $id }}" placeholder="{{ $title }}"
+                {{ $attributes->class(['form-control']) }} />
+
+            @if ($title)
+                <x-label :title="$title" :for="$id" :required="$required" />
+            @endif
+        </div>
+    @else
+        <input type="{{ $type }}" id="{{ $id }}" {{ $attributes->class(['form-control']) }} />
+    @endif
 
     @if ($isPassword)
         <button type="button" class="input-group-text" tabindex="-1" onclick="togglePasswordField(this)">
@@ -30,11 +36,15 @@
     @endif
 </div>
 
+@if ($hint)
+    <x-hint class="mt-1">{{ $hint }}</x-hint>
+@endif
+
 @if ($isPassword)
     @pushOnce('scripts')
         <script>
             function togglePasswordField(button) {
-                let $wrapper = $(button).closest('[input-wrapper]');
+                let $wrapper = $(button).closest('.input-group');
                 let $input = $wrapper.find('input');
                 let $icon = $wrapper.find('i');
 

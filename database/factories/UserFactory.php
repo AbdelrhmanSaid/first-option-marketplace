@@ -21,7 +21,6 @@ class UserFactory extends Factory
             'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => bcrypt('password'),
-            'publisher' => false,
         ];
     }
 
@@ -45,18 +44,6 @@ class UserFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'email_verified_at' => null,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the user is a publisher.
-     */
-    public function publisher(): UserFactory
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'publisher' => true,
             ];
         });
     }

@@ -2,6 +2,7 @@
 
 use App\Models\Admin;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Hash;
 
 test('profile page can be rendered', function () {
     $admin = Admin::factory()->create();
@@ -31,6 +32,9 @@ test('admin can update password', function () {
     ]);
 
     $response->assertOk();
+
+    $admin->refresh();
+    $this->assertTrue(Hash::check('new-password', $admin->password));
 });
 
 test('admin can update profile picture', function () {

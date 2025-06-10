@@ -73,14 +73,16 @@ function warnBeforeAction(action, options = {}) {
         escapeKey: true,
         backgroundDismiss: true,
         buttons: {
+            cancel: {
+                text: __('No'),
+                btnClass: 'btn btn-secondary',
+            },
             confirm: {
                 text: __('Yes'),
+                btnClass: 'btn-primary',
                 action: function () {
                     return action.call(this);
                 },
-            },
-            cancel: {
-                text: __('No'),
             },
         },
     };
@@ -100,16 +102,18 @@ function awaitConfirmation(options = {}) {
             escapeKey: true,
             backgroundDismiss: true,
             buttons: {
-                confirm: {
-                    text: __('Yes'),
-                    action: function () {
-                        return resolve();
-                    },
-                },
                 cancel: {
                     text: __('No'),
+                    btnClass: 'btn btn-secondary',
                     action: function () {
                         return reject();
+                    },
+                },
+                confirm: {
+                    text: __('Yes'),
+                    btnClass: 'btn-primary',
+                    action: function () {
+                        return resolve();
                     },
                 },
             },
@@ -324,6 +328,10 @@ function getFieldValue($field, form = 'body', key = 'name') {
         return tinymce.get($field.attr('id')).getContent();
     }
 
+    if ($field.data('uploader')) {
+        return $field.data('uploader').getFiles();
+    }
+
     return $field.val();
 }
 
@@ -417,9 +425,11 @@ function setFieldValue($field, value, form = 'body', key = 'name') {
     }
 
     if ($field.data('repeater')) {
-        const repeater = $field.data('repeater');
+        return $field.data('repeater').set(value);
+    }
 
-        return repeater.set(value);
+    if ($field.data('uploader')) {
+        return $field.data('uploader').setFiles(value);
     }
 
     return $field.val(value);

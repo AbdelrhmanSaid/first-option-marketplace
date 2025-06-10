@@ -7,7 +7,8 @@
         <div class="card-body border-bottom">
             <div class="d-flex align-items-start gap-2">
                 <x-input name="name" :value="old('name')" :placeholder="__('Name')" validation="required" />
-                <a class="btn btn-outline-primary" onclick="togglePermissions()">{{ __('Toggle All') }}</a>
+                <a class="btn btn-icon" onclick="checkPermissions()"><i class="fas fa-check-double"></i></a>
+                <a class="btn btn-icon" onclick="uncheckPermissions()"><i class="fas fa-times"></i></a>
             </div>
         </div>
 
@@ -50,12 +51,18 @@
     </x-form>
 
     @push('scripts')
-        <script>
-            function togglePermissions() {
-                $('input[type="checkbox"]').each(function() {
-                    $(this).prop('checked', !$(this).prop('checked'));
-                });
-            }
-        </script>
+    <script>
+        function checkPermissions() {
+            $('input[name^="permissions"]').each(function () {
+                $(this).prop('checked', true);
+            });
+        }
+
+        function uncheckPermissions() {
+            $('input[name^="permissions"]').each(function () {
+                $(this).prop('checked', false);
+            });
+        }
+    </script>
     @endpush
 </x-layouts::dashboard>

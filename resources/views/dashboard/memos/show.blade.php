@@ -17,7 +17,13 @@
         </div>
 
         <div class="card-body">
-            {!! $memo->content !!}
+            {!! $memo->content ?: no_content() !!}
         </div>
+
+        @if ($memo->attachments)
+            <div class="card-footer">
+                <x-attachments :attachments="$memo->attachments" />
+            </div>
+        @endif
     </div>
 </x-layouts::dashboard>

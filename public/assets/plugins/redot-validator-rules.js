@@ -108,7 +108,7 @@ RedotValidator.addRule('required_unless', {
 });
 
 RedotValidator.addRule('min', {
-    callback: function ({ value, params, type }) {
+    callback: function ({ field, value, params, type }) {
         const [min] = params;
 
         if (type === 'array') {
@@ -117,6 +117,12 @@ RedotValidator.addRule('min', {
 
         if (type === 'numeric') {
             return value >= min;
+        }
+
+        if (type === 'file') {
+            const files = Array.from(field.get(0).files);
+
+            return files.every((file) => file.size >= min * 1024);
         }
 
         return String(value).trim().length >= min;
@@ -132,12 +138,16 @@ RedotValidator.addRule('min', {
             return __('validation.min.numeric', { attribute: label, min });
         }
 
+        if (type === 'file') {
+            return __('validation.min.file', { attribute: label, min });
+        }
+
         return __('validation.min.string', { attribute: label, min });
     },
 });
 
 RedotValidator.addRule('max', {
-    callback: function ({ value, params, type }) {
+    callback: function ({ field, value, params, type }) {
         const [max] = params;
 
         if (type === 'array') {
@@ -146,6 +156,12 @@ RedotValidator.addRule('max', {
 
         if (type === 'numeric') {
             return value <= max;
+        }
+
+        if (type === 'file') {
+            const files = Array.from(field.get(0).files);
+
+            return files.every((file) => file.size <= max * 1024);
         }
 
         return String(value).trim().length <= max;
@@ -159,6 +175,10 @@ RedotValidator.addRule('max', {
 
         if (type === 'numeric') {
             return __('validation.max.numeric', { attribute: label, max });
+        }
+
+        if (type === 'file') {
+            return __('validation.max.file', { attribute: label, max });
         }
 
         return __('validation.max.string', { attribute: label, max });
@@ -190,7 +210,7 @@ RedotValidator.addRule('between', {
 });
 
 RedotValidator.addRule('size', {
-    callback: function ({ value, params, type }) {
+    callback: function ({ field, value, params, type }) {
         const [size] = params;
 
         if (type === 'array') {
@@ -199,6 +219,12 @@ RedotValidator.addRule('size', {
 
         if (type === 'numeric') {
             return value === size;
+        }
+
+        if (type === 'file') {
+            const files = Array.from(field.get(0).files);
+
+            return files.every((file) => file.size === size * 1024);
         }
 
         return String(value).trim().length === size;
@@ -212,6 +238,10 @@ RedotValidator.addRule('size', {
 
         if (type === 'numeric') {
             return __('validation.size.numeric', { attribute: label, size });
+        }
+
+        if (type === 'file') {
+            return __('validation.size.file', { attribute: label, size });
         }
 
         return __('validation.size.string', { attribute: label, size });
