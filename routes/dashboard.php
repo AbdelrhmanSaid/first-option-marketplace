@@ -19,6 +19,9 @@ Route::middleware('auth:admins')->group(function () {
     /* --------- Website Management --------- */
     Route::resource('users', \App\Http\Controllers\Dashboard\UserController::class);
 
+    /* --------- Listing Management --------- */
+    Route::resource('software', \App\Http\Controllers\Dashboard\SoftwareController::class)->except(['show']);
+
     /* --------- Utilities --------- */
     Route::withoutMiddleware(RoutePermission::class)->group(function () {
         Route::resource('shortened-urls', \App\Http\Controllers\Dashboard\ShortenedUrlController::class)->except(['show']);

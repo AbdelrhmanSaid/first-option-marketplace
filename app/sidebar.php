@@ -45,6 +45,16 @@ return Sidebar::make([
         ]),
 
     Item::make()
+        ->title(__('Listing Management'))
+        ->icon('fa fa-list')
+        ->children([
+            Item::make()
+                ->title(__('Softwares'))
+                ->route('dashboard.software.index')
+                ->icon('fa fa-code'),
+        ]),
+
+    Item::make()
         ->title(__('Utilities'))
         ->icon('fa fa-clipboard')
         ->children([
