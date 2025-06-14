@@ -106,8 +106,8 @@ return [
         'dashboard_sidebar_theme' => 'inherit',
 
         'theme' => [
-            'primary' => 'blue',
-            'base' => 'default',
+            'primary' => 'yellow',
+            'base' => 'zinc',
             'font' => 'sans-serif',
             'radius' => 1,
         ],
