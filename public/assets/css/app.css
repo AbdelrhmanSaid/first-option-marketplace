@@ -32,6 +32,10 @@ body {
     color: var(--tblr-danger) !important;
 }
 
+.app-logo {
+    max-height: 48px;
+}
+
 /* ---------------------------------
  * Global Utilities
  * --------------------------------- */

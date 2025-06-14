@@ -18,6 +18,7 @@ Route::middleware('auth:admins')->group(function () {
 
     /* --------- Website Management --------- */
     Route::resource('users', \App\Http\Controllers\Dashboard\UserController::class);
+    Route::resource('static-pages', \App\Http\Controllers\Dashboard\StaticPageController::class)->only(['index', 'edit', 'update']);
 
     /* --------- Listing Management --------- */
     Route::resource('software', \App\Http\Controllers\Dashboard\SoftwareController::class)->except(['show']);

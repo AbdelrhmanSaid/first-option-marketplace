@@ -87,11 +87,11 @@ return [
     */
 
     'default_settings' => [
-        'app_logo_dark' => 'assets/images/logo-dark.svg',
-        'app_logo_light' => 'assets/images/logo-light.svg',
+        'app_logo_dark' => 'assets/images/logo-dark.png',
+        'app_logo_light' => 'assets/images/logo-light.png',
         'app_name' => [
-            'en' => 'Dashboard',
-            'ar' => 'لوحة التحكم',
+            'en' => 'First Option Marketplace',
+            'ar' => 'متجر First Option',
         ],
         'website_locales' => ['en', 'ar'],
         'dashboard_locales' => ['en', 'ar'],

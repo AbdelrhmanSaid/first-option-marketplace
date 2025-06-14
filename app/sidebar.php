@@ -42,6 +42,11 @@ return Sidebar::make([
                 ->title(__('Users Management'))
                 ->route('dashboard.users.index')
                 ->icon('fa fa-users'),
+
+            Item::make()
+                ->title(__('Static Pages'))
+                ->route('dashboard.static-pages.index')
+                ->icon('fa fa-file'),
         ]),
 
     Item::make()

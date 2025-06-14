@@ -1,6 +1,6 @@
 <x-form id="logout" :action="route('website.logout')" method="POST" class="d-none" disable-validation />
 
-<nav class="navbar navbar-expand-lg d-print-none">
+<nav class="navbar navbar-expand-lg bg-transparent shadow-none d-print-none">
     <div class="container">
         <a class="navbar-brand my-2" href="{{ route('website.index') }}">
             <x-logo />

@@ -18,7 +18,7 @@
 
     <title>{!! $title !!}</title>
 
-    <link rel="icon" href="{{ hashed_asset('/favicon.ico') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ hashed_asset('/favicon.png') }}" type="image/png" />
 
     {{-- Caching using Service Worker --}}
     @if (config('app.env') === 'production' && setting('service_worker_enabled'))

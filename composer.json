@@ -22,6 +22,7 @@
         "redot/sidebar": "^1.0",
         "spatie/laravel-image-optimizer": "^1.8",
         "spatie/laravel-permission": "^6.15",
+        "spatie/laravel-translatable": "^6.11",
         "stichoza/google-translate-php": "^5.2"
     },
     "require-dev": {

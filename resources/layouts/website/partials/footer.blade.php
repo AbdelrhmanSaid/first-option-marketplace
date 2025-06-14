@@ -1,25 +1,18 @@
-<div class="border-top" style="background: var(--tblr-bg-surface)">
+<footer>
     <footer class="container py-5">
         <div class="row">
             <div class="col-6 col-md-3 mb-3">
                 <h5>{{ __('Quick Links') }}</h5>
 
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link p-0">{{ __('Quick Link') }}</a>
-                    </li>
-
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link p-0">{{ __('Quick Link') }}</a>
-                    </li>
-
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link p-0">{{ __('Quick Link') }}</a>
-                    </li>
-
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link p-0">{{ __('Quick Link') }}</a>
-                    </li>
+                    @foreach (\App\Models\StaticPage::select('title', 'slug')->get() as $page)
+                        <li class="nav-item mb-2">
+                            <a href="{{ route('website.static-pages.show', $page->slug) }}"
+                                class="nav-link p-0 text-body-secondary">
+                                {{ $page->title }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 

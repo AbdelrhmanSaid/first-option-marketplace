@@ -15,6 +15,8 @@ Route::get('/', \App\Http\Controllers\Website\HomeController::class)->name('inde
 Route::get('up', \App\Http\Controllers\Website\HealthCheckController::class)->name('health-check');
 Route::get('r/{shortenedUrl?}', [\App\Http\Controllers\Website\ShortenedUrlController::class, 'show'])->name('shortened-urls.show');
 
+Route::get('static-pages/{staticPage}', [\App\Http\Controllers\Website\StaticPageController::class, 'show'])->name('static-pages.show');
+
 Route::middleware('auth:users')->group(function () {
     Route::get('profile', [\App\Http\Controllers\Website\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [\App\Http\Controllers\Website\ProfileController::class, 'update'])->name('profile.update');
