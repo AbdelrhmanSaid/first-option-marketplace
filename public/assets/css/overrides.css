@@ -38,6 +38,10 @@ ul.pagination {
     flex-wrap: wrap;
 }
 
+ul.pagination .page-item.active .page-link:hover {
+    background-color: var(--tblr-pagination-active-bg);
+}
+
 [data-bs-theme='dark'] .form-control:focus,
 [data-bs-theme='dark'] .form-check-input:focus,
 .input-group-flat:focus-within .form-control,
