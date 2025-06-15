@@ -20,6 +20,10 @@ Route::get('static-pages/{staticPage}', [\App\Http\Controllers\Website\StaticPag
 Route::middleware('auth:users')->group(function () {
     Route::get('profile', [\App\Http\Controllers\Website\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [\App\Http\Controllers\Website\ProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('publisher/register', [\App\Http\Controllers\Website\PublisherController::class, 'create'])->name('publisher.create');
+    Route::post('publisher/register', [\App\Http\Controllers\Website\PublisherController::class, 'store'])->name('publisher.store');
+    Route::get('publisher/dashboard', [\App\Http\Controllers\Website\PublisherController::class, 'index'])->name('publisher.dashboard');
 });
 
 /*

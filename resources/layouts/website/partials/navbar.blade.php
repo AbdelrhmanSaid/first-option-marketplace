@@ -62,11 +62,11 @@
                             <div class="dropdown-divider"></div>
 
                             @if (current_user()->publisher)
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ route('website.publisher.dashboard') }}" class="dropdown-item">
                                     <span class="dropdown-item-title">{{ __('Publisher Panel') }}</span>
                                 </a>
                             @else
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ route('website.publisher.create') }}" class="dropdown-item">
                                     <span class="dropdown-item-title">{{ __('Become a Publisher') }}</span>
                                 </a>
                             @endif
