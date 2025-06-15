@@ -4,13 +4,10 @@ namespace App\Http\Controllers\Website;
 
 use App\Enums\PublisherMemberRole;
 use App\Models\Publisher;
-use App\Traits\CanUploadFile;
 use Illuminate\Http\Request;
 
 class PublisherController extends Controller
 {
-    use CanUploadFile;
-
     /**
      * Display a listing of the resource.
      */
@@ -37,17 +34,7 @@ class PublisherController extends Controller
             'headline' => 'nullable|string|max:255',
             'email' => 'required|email|max:255|unique:publishers,email',
             'website' => 'nullable|url|max:255',
-            'header_image' => 'nullable|image|max:2048',
-            'logo' => 'nullable|image|max:2048',
         ]);
-
-        if ($request->hasFile('header_image')) {
-            $validated['header_image'] = $this->uploadFile($request->file('header_image'), 'publishers');
-        }
-
-        if ($request->hasFile('logo')) {
-            $validated['logo'] = $this->uploadFile($request->file('logo'), 'publishers');
-        }
 
         // Create the publisher account
         $publisher = Publisher::create($validated);
