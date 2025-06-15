@@ -58,6 +58,18 @@
                             <a href="#" class="dropdown-item" onclick="event.preventDefault(); $('#logout').submit()">
                                 <span class="dropdown-item-title">{{ __('Logout') }}</span>
                             </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            @if (current_user()->publisher)
+                                <a href="#" class="dropdown-item">
+                                    <span class="dropdown-item-title">{{ __('Publisher Panel') }}</span>
+                                </a>
+                            @else
+                                <a href="#" class="dropdown-item">
+                                    <span class="dropdown-item-title">{{ __('Become a Publisher') }}</span>
+                                </a>
+                            @endif
                         @else
                             <a href="{{ route('website.login') }}" class="dropdown-item">
                                 <span class="dropdown-item-title">{{ __('Login') }}</span>
