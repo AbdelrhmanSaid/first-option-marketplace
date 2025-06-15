@@ -37,7 +37,7 @@ class CategorySeeder extends Seeder
         'Schematics',
         'Structural',
         'Survey',
-        'Translator'
+        'Translator',
     ];
 
     /**

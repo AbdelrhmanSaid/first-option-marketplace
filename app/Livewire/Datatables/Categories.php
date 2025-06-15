@@ -3,9 +3,9 @@
 namespace App\Livewire\Datatables;
 
 use Illuminate\Database\Eloquent\Builder;
+use Redot\Datatables\Actions\Action;
 use Redot\Datatables\Columns\TextColumn;
 use Redot\Datatables\Datatable;
-use Redot\Datatables\Actions\Action;
 
 class Categories extends Datatable
 {
