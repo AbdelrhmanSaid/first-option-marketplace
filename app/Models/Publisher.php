@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Enums\PublisherMemberRole;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Publisher extends Model
@@ -36,10 +38,26 @@ class Publisher extends Model
     ];
 
     /**
-     * Get the user that owns the publisher.
+     * Get the publisher members.
      */
-    public function user(): BelongsTo
+    public function members(): HasMany
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(PublisherMemeber::class);
+    }
+
+    /**
+     * Get the publisher owner.
+     */
+    public function owner(): BelongsTo
+    {
+        return $this->members()->where('role', PublisherMemberRole::Owner->value)->first();
+    }
+
+    /**
+     * Get the publisher admins.
+     */
+    public function admins(): HasMany
+    {
+        return $this->members()->where('role', PublisherMemberRole::Admin->value)->get();
     }
 }

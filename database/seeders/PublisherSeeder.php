@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\PublisherMemberRole;
+use App\Models\Publisher;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -19,7 +21,7 @@ class PublisherSeeder extends Seeder
             'password' => 'password',
         ]);
 
-        $user->publisher()->create([
+        $publisher = Publisher::create([
             'name' => 'First Option',
             'headline' => 'The official First Option Publisher account',
             'email' => 'support@firstoption-es.com',
@@ -27,6 +29,11 @@ class PublisherSeeder extends Seeder
             'logo' => asset('assets/images/publisher-logo.png'),
             'website' => 'https://firstoption-es.com',
             'is_verified' => true,
+        ]);
+
+        $publisher->members()->create([
+            'user_id' => $user->id,
+            'role' => PublisherMemberRole::Owner->value,
         ]);
     }
 }

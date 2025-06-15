@@ -6,9 +6,9 @@ use Carbon\Carbon;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -82,15 +82,15 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get the publisher for the user.
+     * Get the publisher account for the user.
      */
-    public function publisher(): HasOne
+    public function publisher(): HasOneThrough
     {
-        return $this->hasOne(Publisher::class);
+        return $this->hasOneThrough(Publisher::class, PublisherMemeber::class, 'user_id', 'id', 'id', 'publisher_id');
     }
 
     /**
-     * Scope a query to only include publishers.
+     * Scope a query to only include users that have a publisher account.
      */
     public function scopePublisher(Builder $query): Builder
     {
