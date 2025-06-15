@@ -57,6 +57,11 @@ return Sidebar::make([
                 ->title(__('Softwares'))
                 ->route('dashboard.software.index')
                 ->icon('fa fa-code'),
+
+            Item::make()
+                ->title(__('Categories'))
+                ->route('dashboard.categories.index')
+                ->icon('fa fa-tags'),
         ]),
 
     Item::make()
