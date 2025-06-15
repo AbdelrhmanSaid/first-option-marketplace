@@ -86,7 +86,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function publisher(): HasOneThrough
     {
-        return $this->hasOneThrough(Publisher::class, PublisherMemeber::class, 'user_id', 'id', 'id', 'publisher_id');
+        return $this->hasOneThrough(Publisher::class, PublisherMember::class, 'user_id', 'id', 'id', 'publisher_id');
     }
 
     /**

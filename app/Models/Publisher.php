@@ -42,7 +42,7 @@ class Publisher extends Model
      */
     public function members(): HasMany
     {
-        return $this->hasMany(PublisherMemeber::class);
+        return $this->hasMany(PublisherMember::class);
     }
 
     /**
