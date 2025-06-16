@@ -41,7 +41,7 @@ class PublisherMemberController extends Controller
 
         $publisher->members()->create([
             'user_id' => $user->id,
-            'role' => $request->role
+            'role' => $request->role,
         ]);
 
         return $this->success(__('Member added successfully'));
