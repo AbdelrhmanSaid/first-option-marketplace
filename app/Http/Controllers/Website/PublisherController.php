@@ -11,9 +11,28 @@ class PublisherController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $segment = 'overview')
     {
-        return view('website.publisher.index');
+        $segments = $this->segments();
+        $segment = array_key_exists($segment, $segments) ? $segment : array_key_first($segments);
+
+        return view('website.publisher.index', [
+            'segments' => $segments,
+            'segment' => $segment,
+        ]);
+    }
+
+    /**
+     * Get the segments for the publisher dashboard.
+     */
+    protected function segments(): array
+    {
+        return [
+            'overview' => __('Overview'),
+            'add-ons' => __('Add-ons'),
+            'payments' => __('Payments'),
+            'settings' => __('Settings'),
+        ];
     }
 
     /**

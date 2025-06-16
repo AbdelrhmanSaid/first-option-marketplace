@@ -63,7 +63,7 @@
 
                             @if (current_user()->publisher)
                                 <a href="{{ route('website.publisher.dashboard') }}" class="dropdown-item">
-                                    <span class="dropdown-item-title">{{ __('Publisher Panel') }}</span>
+                                    <span class="dropdown-item-title">{{ __('Publisher Dashboard') }}</span>
                                 </a>
                             @else
                                 <a href="{{ route('website.publisher.create') }}" class="dropdown-item">

@@ -23,7 +23,7 @@ Route::middleware('auth:users')->group(function () {
 
     Route::get('publisher/register', [\App\Http\Controllers\Website\PublisherController::class, 'create'])->name('publisher.create');
     Route::post('publisher/register', [\App\Http\Controllers\Website\PublisherController::class, 'store'])->name('publisher.store');
-    Route::get('publisher/dashboard', [\App\Http\Controllers\Website\PublisherController::class, 'index'])->name('publisher.dashboard');
+    Route::get('publisher/dashboard/{segment?}', [\App\Http\Controllers\Website\PublisherController::class, 'index'])->name('publisher.dashboard');
 });
 
 /*
