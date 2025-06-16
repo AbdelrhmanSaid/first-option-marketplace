@@ -1,6 +1,8 @@
 <x-layouts::website :title="__('Publisher Dashboard')">
     <div class="container">
-        <div class="row">
+
+        <x-status />
+        <div class="row gy-3">
             <div class="col-12 col-md-3">
                 <div class="card">
                     <div class="card-header">

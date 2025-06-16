@@ -96,4 +96,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $query->has('publisher');
     }
+
+    /**
+     * Get the member role of the user.
+     */
+    public function getMemberRoleAttribute(): \App\Enums\PublisherMemberRole
+    {
+        return $this->publisher->members()->where('user_id', $this->id)->first()->role;
+    }
 }

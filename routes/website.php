@@ -24,6 +24,9 @@ Route::middleware('auth:users')->group(function () {
     Route::get('publisher/register', [\App\Http\Controllers\Website\PublisherController::class, 'create'])->name('publisher.create');
     Route::post('publisher/register', [\App\Http\Controllers\Website\PublisherController::class, 'store'])->name('publisher.store');
     Route::get('publisher/dashboard/{segment?}', [\App\Http\Controllers\Website\PublisherController::class, 'index'])->name('publisher.dashboard');
+
+    Route::post('publisher/members', [\App\Http\Controllers\Website\PublisherMemberController::class, 'store'])->name('publisher.members.store');
+    Route::delete('publisher/members/{publisherMember}', [\App\Http\Controllers\Website\PublisherMemberController::class, 'destroy'])->name('publisher.members.destroy');
 });
 
 /*

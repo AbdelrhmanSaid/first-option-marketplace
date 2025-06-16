@@ -18,6 +18,7 @@ class PublisherSeeder extends Seeder
             'first_name' => 'Kamal',
             'last_name' => 'Shawky',
             'email' => 'kamal@firstoption-es.com',
+            'email_verified_at' => now(),
             'password' => 'password',
         ]);
 

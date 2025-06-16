@@ -29,6 +29,7 @@ class PublisherController extends Controller
     {
         return [
             'overview' => __('Overview'),
+            'members' => __('Members'),
             'add-ons' => __('Add-ons'),
             'payments' => __('Payments'),
             'settings' => __('Settings'),
