@@ -1,9 +1,8 @@
+@use('App\Enums\PublisherMemberRole')
+
 @php
-    $members = current_user()->publisher->members;
-    $canDelete = in_array(current_user()->member_role, [
-        \App\Enums\PublisherMemberRole::Admin,
-        \App\Enums\PublisherMemberRole::Owner,
-    ]);
+    $members = $publisher->members;
+    $isManager = in_array(current_user()->member->role, [PublisherMemberRole::Admin, PublisherMemberRole::Owner]);
 @endphp
 
 <div class="card">
@@ -22,7 +21,7 @@
                     <th>{{ __('Email') }}</th>
                     <th>{{ __('Role') }}</th>
 
-                    @if ($canDelete)
+                    @if ($isManager)
                         <th class="w-1"></th>
                     @endif
                 </tr>
@@ -35,13 +34,11 @@
                         <td>{{ $member->user->email }}</td>
                         <td>{{ $member->role }}</td>
 
-                        @if ($canDelete)
+                        @if ($isManager)
                             <td>
-                                @if ($member->user_id !== current_user()->id && $member->role !== \App\Enums\PublisherMemberRole::Owner)
-                                    <button type="button" class="btn btn-icon text-danger"
-                                        onclick="confirmMemberDelete('{{ $member->id }}')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                @if ($member->user_id !== current_user()->id && $member->role !== PublisherMemberRole::Owner)
+                                    <i class="fas fa-trash text-danger cursor-pointer"
+                                        onclick="deleteMember('{{ $member->id }}')"></i>
                                 @endif
                             </td>
                         @endif
@@ -95,7 +92,7 @@
 
 @push('scripts')
     <script>
-        function confirmMemberDelete(id) {
+        function deleteMember(id) {
             warnBeforeAction(() => {
                 const endpoint = '{{ route('website.publisher.members.destroy', ':id') }}';
                 formRequest(endpoint.replace(':id', id), {}, 'DELETE');

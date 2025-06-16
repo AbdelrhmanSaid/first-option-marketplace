@@ -24,9 +24,8 @@ class PublisherSeeder extends Seeder
 
         $publisher = Publisher::create([
             'name' => 'First Option',
-            'headline' => 'The official First Option Publisher account',
+            'headline' => 'The official first option publisher account',
             'email' => 'support@firstoption-es.com',
-            'header_image' => asset('assets/images/default-header.jpg'),
             'logo' => asset('assets/images/publisher-logo.png'),
             'website' => 'https://firstoption-es.com',
             'is_verified' => true,

@@ -21,7 +21,6 @@ class Publisher extends Model
         'name',
         'headline',
         'email',
-        'header_image',
         'logo',
         'website',
         'is_verified',

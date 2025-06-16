@@ -16,9 +16,13 @@ class PublisherController extends Controller
         $segments = $this->segments();
         $segment = array_key_exists($segment, $segments) ? $segment : array_key_first($segments);
 
+        // Get the publisher account for the current user
+        $publisher = current_user()->publisher;
+
         return view('website.publisher.index', [
             'segments' => $segments,
             'segment' => $segment,
+            'publisher' => $publisher,
         ]);
     }
 

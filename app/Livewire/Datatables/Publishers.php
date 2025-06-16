@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Datatables;
 
+use App\Models\Publisher;
 use Illuminate\Database\Eloquent\Builder;
 use Redot\Datatables\Columns\BadgeColumn;
 use Redot\Datatables\Columns\TextColumn;
@@ -16,7 +17,7 @@ class Publishers extends Datatable
      */
     public function query(): Builder
     {
-        return \App\Models\Publisher::query();
+        return Publisher::query();
     }
 
     /**
@@ -25,6 +26,10 @@ class Publishers extends Datatable
     public function columns(): array
     {
         return [
+            TextColumn::make()
+                ->getter(fn ($value, Publisher $publisher) => component('avatar', ['name' => $publisher->name, 'image' => $publisher->logo]))
+                ->exportable(false)
+                ->html(),
             TextColumn::make('name', __('Name'))
                 ->width('100%', min: '200px')
                 ->searchable()

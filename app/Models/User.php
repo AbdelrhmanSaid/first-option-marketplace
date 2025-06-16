@@ -8,6 +8,7 @@ use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -82,6 +83,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Get the member account for the user.
+     */
+    public function member(): HasOne
+    {
+        return $this->hasOne(PublisherMember::class);
+    }
+
+    /**
      * Get the publisher account for the user.
      */
     public function publisher(): HasOneThrough
@@ -95,13 +104,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopePublisher(Builder $query): Builder
     {
         return $query->has('publisher');
-    }
-
-    /**
-     * Get the member role of the user.
-     */
-    public function getMemberRoleAttribute(): \App\Enums\PublisherMemberRole
-    {
-        return $this->publisher->members()->where('user_id', $this->id)->first()->role;
     }
 }

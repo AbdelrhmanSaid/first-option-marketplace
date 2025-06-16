@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('headline');
             $table->string('email');
-            $table->string('header_image')->nullable();
             $table->string('logo')->nullable();
             $table->string('website')->nullable();
             $table->boolean('is_verified')->default(false);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendNewMemberNotification;
 use App\Jobs\SendNewUserNotification;
 use App\Models\PublisherMember;
 use App\Models\User;
@@ -43,6 +44,8 @@ class PublisherMemberController extends Controller
             'user_id' => $user->id,
             'role' => $request->role,
         ]);
+
+        SendNewMemberNotification::dispatch($user, $publisher);
 
         return $this->success(__('Member added successfully'));
     }
