@@ -23,6 +23,7 @@ Route::middleware('auth:admins')->group(function () {
     /* --------- Listing Management --------- */
     Route::resource('software', \App\Http\Controllers\Dashboard\SoftwareController::class)->except(['show']);
     Route::resource('categories', \App\Http\Controllers\Dashboard\CategoryController::class)->except(['show']);
+    Route::resource('publishers', \App\Http\Controllers\Dashboard\PublisherController::class)->only('index');
 
     /* --------- Utilities --------- */
     Route::withoutMiddleware(RoutePermission::class)->group(function () {

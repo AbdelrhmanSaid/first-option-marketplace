@@ -62,6 +62,11 @@ return Sidebar::make([
                 ->title(__('Categories'))
                 ->route('dashboard.categories.index')
                 ->icon('fa fa-tags'),
+
+            Item::make()
+                ->title(__('Publishers'))
+                ->route('dashboard.publishers.index')
+                ->icon('fa fa-users'),
         ]),
 
     Item::make()
