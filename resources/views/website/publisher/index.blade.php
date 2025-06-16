@@ -30,12 +30,15 @@
 
                     <div class="list-group list-group-flush">
                         @foreach ($segments as $key => $value)
-                            <a href="{{ route('website.publisher.dashboard', $key) }}" @class([
-                                'list-group-item list-group-item-action',
-                                'active' => $segment === $key,
-                            ])>
-                                {{ $value }}
-                            </a>
+                            @if (in_array(current_user()->member->role, $value['roles']))
+                                <a href="{{ route('website.publisher.dashboard', $key) }}" @class([
+                                    'list-group-item list-group-item-action',
+                                    'active' => $segment === $key,
+                                ])>
+                                    <i class="{{ $value['icon'] }} me-2"></i>
+                                    {{ $value['title'] }}
+                                </a>
+                            @endif
                         @endforeach
                     </div>
                 </div>

@@ -1,13 +1,9 @@
 @use('App\Enums\PublisherMemberRole')
 
-@php
-    $members = $publisher->members;
-    $isManager = in_array(current_user()->member->role, [PublisherMemberRole::Admin, PublisherMemberRole::Owner]);
-@endphp
-
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title">{{ __('Members') }}</h3>
+
         <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#add-member-modal">
             <i class="fa-solid fa-plus"></i>
         </button>
@@ -20,28 +16,22 @@
                     <th>{{ __('Name') }}</th>
                     <th>{{ __('Email') }}</th>
                     <th>{{ __('Role') }}</th>
-
-                    @if ($isManager)
-                        <th class="w-1"></th>
-                    @endif
+                    <th class="w-1"></th>
                 </tr>
             </thead>
 
             <tbody>
-                @foreach ($members as $member)
+                @foreach ($publisher->members as $member)
                     <tr>
                         <td>{{ $member->user->full_name }}</td>
                         <td>{{ $member->user->email }}</td>
                         <td>{{ $member->role }}</td>
-
-                        @if ($isManager)
-                            <td>
-                                @if ($member->user_id !== current_user()->id && $member->role !== PublisherMemberRole::Owner)
-                                    <i class="fas fa-trash text-danger cursor-pointer"
-                                        onclick="deleteMember('{{ $member->id }}')"></i>
-                                @endif
-                            </td>
-                        @endif
+                        <td>
+                            @if ($member->user_id !== current_user()->id && $member->role !== PublisherMemberRole::Owner)
+                                <i class="fas fa-trash text-danger cursor-pointer"
+                                    onclick="deleteMember('{{ $member->id }}')"></i>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -49,7 +39,7 @@
     </div>
 
     <div class="card-footer text-muted">
-        {{ __('Publisher account has :count team member(s)', ['count' => $members->count()]) }}
+        {{ __('Publisher account has :count team member(s)', ['count' => $publisher->members->count()]) }}
     </div>
 </div>
 

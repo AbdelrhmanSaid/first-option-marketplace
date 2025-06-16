@@ -32,11 +32,36 @@ class PublisherController extends Controller
     protected function segments(): array
     {
         return [
-            'overview' => __('Overview'),
-            'members' => __('Members'),
-            'add-ons' => __('Add-ons'),
-            'payments' => __('Payments'),
-            'settings' => __('Settings'),
+            'overview' => [
+                'title' => __('Overview'),
+                'icon' => 'fas fa-home',
+                'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin, PublisherMemberRole::Member],
+            ],
+            'members' => [
+                'title' => __('Members'),
+                'icon' => 'fas fa-users',
+                'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin],
+            ],
+            'add-ons' => [
+                'title' => __('Add-ons'),
+                'icon' => 'fas fa-plus',
+                'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin, PublisherMemberRole::Member],
+            ],
+            'feedbacks' => [
+                'title' => __('Feedbacks'),
+                'icon' => 'fas fa-comments',
+                'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin, PublisherMemberRole::Member],
+            ],
+            'payments' => [
+                'title' => __('Payments'),
+                'icon' => 'fas fa-money-bill',
+                'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin],
+            ],
+            'settings' => [
+                'title' => __('Settings'),
+                'icon' => 'fas fa-cog',
+                'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin],
+            ],
         ];
     }
 
