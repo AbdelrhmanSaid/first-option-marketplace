@@ -1,4 +1,4 @@
-<x-form class="card" :action="route('website.publishers.panel.settings.update')" method="PUT">
+<x-form class="card" :action="route('website.publishers.dashboard.settings.update')" method="PUT">
     <div class="card-header">
         <p class="card-title">{{ __('Settings') }}</p>
     </div>

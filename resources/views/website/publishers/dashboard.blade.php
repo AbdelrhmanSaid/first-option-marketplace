@@ -31,7 +31,7 @@
                     <div class="list-group list-group-flush">
                         @foreach ($segments as $key => $value)
                             @if (in_array(current_user()->member->role, $value['roles']))
-                                <a href="{{ route('website.publishers.panel.dashboard', $key) }}" @class([
+                                <a href="{{ route('website.publishers.dashboard', $key) }}" @class([
                                     'list-group-item list-group-item-action',
                                     'active' => $segment === $key,
                                 ])>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="col-12 col-md-9">
-                @include("website.publishers.panel.partials.$segment")
+                @include("website.publishers.dashboard-sections.$segment")
             </div>
         </div>
     </div>
