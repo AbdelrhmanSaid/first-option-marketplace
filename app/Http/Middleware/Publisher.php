@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Publihser
+class Publisher
 {
     /**
      * Handle an incoming request.

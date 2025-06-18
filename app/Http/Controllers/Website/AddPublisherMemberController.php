@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers\Website;
 
-use App\Http\Controllers\Controller;
 use App\Jobs\SendNewMemberNotification;
 use App\Jobs\SendNewUserNotification;
-use App\Models\PublisherMember;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class PublisherMemberController extends Controller
+class AddPublisherMemberController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
+     * Handle the incoming request.
      */
-    public function store(Request $request)
+    public function __invoke(Request $request)
     {
         $request->validate([
             'first_name' => 'required|string|max:255',
@@ -51,15 +49,5 @@ class PublisherMemberController extends Controller
         SendNewMemberNotification::dispatch($user, $publisher);
 
         return $this->success(__('Member added successfully'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(PublisherMember $publisherMember)
-    {
-        $publisherMember->delete();
-
-        return $this->success(__('Member removed successfully'));
     }
 }

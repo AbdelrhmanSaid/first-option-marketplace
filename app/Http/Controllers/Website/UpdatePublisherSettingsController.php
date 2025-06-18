@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Website;
 use App\Traits\CanUploadFile;
 use Illuminate\Http\Request;
 
-class PublisherSettingsController extends Controller
+class UpdatePublisherSettingsController extends Controller
 {
     use CanUploadFile;
 
     /**
-     * Update the specified resource in storage.
+     * Handle the incoming request.
      */
-    public function update(Request $request)
+    public function __invoke(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
