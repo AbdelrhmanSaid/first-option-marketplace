@@ -1,5 +1,5 @@
 <x-layouts::website.compact :title="__('Become a Publisher')">
-    <x-form class="card card-md" :action="route('website.publisher.store')" method="POST">
+    <x-form class="card card-md" :action="route('website.publishers.panel.store')" method="POST">
         <div class="card-body">
             <h2>{{ __('Become a Publisher') }}</h2>
             <p class="text-muted mb-4">{{ __('Join us as a publisher and start sharing your content with the world.') }}

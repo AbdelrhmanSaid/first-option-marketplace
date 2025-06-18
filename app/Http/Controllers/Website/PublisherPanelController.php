@@ -6,7 +6,7 @@ use App\Enums\PublisherMemberRole;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
 
-class PublisherProfileController extends Controller
+class PublisherPanelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class PublisherProfileController extends Controller
         // Get the publisher account for the current user
         $publisher = current_user()->publisher;
 
-        return view('website.publisher.index', [
+        return view('website.publishers.panel.panel', [
             'segments' => $segments,
             'segment' => $segment,
             'publisher' => $publisher,
@@ -70,7 +70,7 @@ class PublisherProfileController extends Controller
      */
     public function create()
     {
-        return view('website.publisher.create');
+        return view('website.publishers.panel.create');
     }
 
     /**
@@ -94,6 +94,6 @@ class PublisherProfileController extends Controller
             'role' => PublisherMemberRole::Owner->value,
         ]);
 
-        return $this->success(__('Publisher account created successfully.'), 'website.publisher.dashboard');
+        return $this->success(__('Publisher account created successfully.'), 'website.publishers.panel.dashboard');
     }
 }

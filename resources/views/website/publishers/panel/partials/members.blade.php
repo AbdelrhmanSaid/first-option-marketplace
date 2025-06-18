@@ -45,7 +45,7 @@
 
 <div class="modal fade" id="add-member-modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <x-form class="modal-content" action="{{ route('website.publisher.members.store') }}" method="POST">
+        <x-form class="modal-content" action="{{ route('website.publishers.panel.members.store') }}" method="POST">
             <div class="modal-header">
                 <h5 class="modal-title">{{ __('Add Member') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -84,7 +84,7 @@
     <script>
         function deleteMember(id) {
             warnBeforeAction(() => {
-                const endpoint = '{{ route('website.publisher.members.destroy', ':id') }}';
+                const endpoint = '{{ route('website.publishers.panel.members.destroy', ':id') }}';
                 formRequest(endpoint.replace(':id', id), {}, 'DELETE');
             });
         }

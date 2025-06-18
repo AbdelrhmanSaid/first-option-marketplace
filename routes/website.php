@@ -16,19 +16,18 @@ Route::get('up', \App\Http\Controllers\Website\HealthCheckController::class)->na
 Route::get('r/{shortenedUrl?}', [\App\Http\Controllers\Website\ShortenedUrlController::class, 'show'])->name('shortened-urls.show');
 
 Route::get('static-pages/{staticPage}', [\App\Http\Controllers\Website\StaticPageController::class, 'show'])->name('static-pages.show');
-Route::get('publishers/{publisher}', [\App\Http\Controllers\Website\PublisherController::class, 'show'])->name('publishers.show');
+Route::resource('publishers', \App\Http\Controllers\Website\PublisherController::class)->only(['show']);
 
 Route::middleware('auth:users')->group(function () {
     Route::get('profile', [\App\Http\Controllers\Website\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [\App\Http\Controllers\Website\ProfileController::class, 'update'])->name('profile.update');
 
-    Route::get('publisher/register', [\App\Http\Controllers\Website\PublisherProfileController::class, 'create'])->name('publisher.create');
-    Route::post('publisher/register', [\App\Http\Controllers\Website\PublisherProfileController::class, 'store'])->name('publisher.store');
-
-    Route::get('publisher/dashboard/{segment?}', [\App\Http\Controllers\Website\PublisherProfileController::class, 'index'])->name('publisher.dashboard');
-    Route::post('publisher/members', [\App\Http\Controllers\Website\PublisherMemberController::class, 'store'])->name('publisher.members.store');
-    Route::delete('publisher/members/{publisherMember}', [\App\Http\Controllers\Website\PublisherMemberController::class, 'destroy'])->name('publisher.members.destroy');
-    Route::put('publisher/settings', [\App\Http\Controllers\Website\PublisherSettingsController::class, 'update'])->name('publisher.settings.update');
+    Route::get('publishers/panel/{segment}', [\App\Http\Controllers\Website\PublisherPanelController::class, 'index'])->name('publishers.panel.dashboard');
+    Route::get('publishers/panel/register', [\App\Http\Controllers\Website\PublisherPanelController::class, 'create'])->name('publishers.panel.create');
+    Route::post('publishers/panel/register', [\App\Http\Controllers\Website\PublisherPanelController::class, 'store'])->name('publishers.panel.store');
+    Route::post('publishers/panel/members', [\App\Http\Controllers\Website\PublisherMemberController::class, 'store'])->name('publishers.panel.members.store');
+    Route::delete('publishers/panel/members/{publisherMember}', [\App\Http\Controllers\Website\PublisherMemberController::class, 'destroy'])->name('publishers.panel.members.destroy');
+    Route::put('publishers/panel/settings', [\App\Http\Controllers\Website\PublisherSettingsController::class, 'update'])->name('publishers.panel.settings.update');
 });
 
 /*
