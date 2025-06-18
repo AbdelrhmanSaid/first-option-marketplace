@@ -37,14 +37,9 @@ class PublisherController extends Controller
                 'icon' => 'fas fa-home',
                 'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin, PublisherMemberRole::Member],
             ],
-            'members' => [
-                'title' => __('Members'),
-                'icon' => 'fas fa-users',
-                'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin],
-            ],
             'add-ons' => [
                 'title' => __('Add-ons'),
-                'icon' => 'fas fa-plus',
+                'icon' => 'fas fa-puzzle-piece',
                 'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin, PublisherMemberRole::Member],
             ],
             'feedbacks' => [
@@ -55,6 +50,11 @@ class PublisherController extends Controller
             'payments' => [
                 'title' => __('Payments'),
                 'icon' => 'fas fa-money-bill',
+                'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin],
+            ],
+            'members' => [
+                'title' => __('Members'),
+                'icon' => 'fas fa-users',
                 'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin],
             ],
             'settings' => [

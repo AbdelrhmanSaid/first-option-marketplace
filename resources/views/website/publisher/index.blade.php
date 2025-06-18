@@ -8,10 +8,10 @@
                     <x-avatar :image="$publisher->logo" :name="$publisher->name" size="lg" />
 
                     <div>
-                        <h1 class="h3 mb-1">
+                        <h1 class="h3 mb-1 d-flex align-items-center gap-2">
                             {{ $publisher->name }}
                             @if ($publisher->is_verified)
-                                <i class="far fa-check-circle text-success ms-1"></i>
+                                <x-icons.verified class="text-primary" />
                             @endif
                         </h1>
 
