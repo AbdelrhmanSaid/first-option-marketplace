@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Publisher extends Model
 {
@@ -19,6 +20,7 @@ class Publisher extends Model
      */
     protected $fillable = [
         'name',
+        'slug',
         'headline',
         'email',
         'logo',
@@ -34,6 +36,42 @@ class Publisher extends Model
     protected $casts = [
         'is_verified' => 'boolean',
     ];
+
+    /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($publisher) {
+            if (empty($publisher->slug)) {
+                $publisher->slug = static::generateUniqueSlug($publisher->name);
+            }
+        });
+    }
+
+    /**
+     * Generate a unique slug for the publisher.
+     */
+    protected static function generateUniqueSlug(string $name): string
+    {
+        $slug = sprintf('pub-%s-%s', Str::slug($name), Str::random(5));
+
+        if (static::where('slug', $slug)->exists()) {
+            return static::generateUniqueSlug($name);
+        }
+
+        return $slug;
+    }
+
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 
     /**
      * Get the publisher members.
