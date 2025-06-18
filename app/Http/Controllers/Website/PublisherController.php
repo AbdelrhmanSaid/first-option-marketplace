@@ -45,7 +45,7 @@ class PublisherController extends Controller
             'role' => PublisherMemberRole::Owner->value,
         ]);
 
-        return $this->success(__('Publisher account created successfully.'), 'website.publishers.dashboard', 'overview');
+        return $this->success(__('Publisher account created successfully.'), 'website.publishers.dashboard.index', 'overview');
     }
 
     /**

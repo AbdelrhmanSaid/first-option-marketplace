@@ -23,11 +23,11 @@ Route::middleware('auth:users')->group(function () {
     Route::put('profile', [\App\Http\Controllers\Website\ProfileController::class, 'update'])->name('profile.update');
 });
 
-Route::middleware(['auth:users', \App\Http\Middleware\Publisher::class])->group(function () {
-    Route::get('publishers/dashboard/{segment}', [\App\Http\Controllers\Website\PublisherDashboardController::class, 'index'])->name('publishers.dashboard');
-    Route::post('publishers/dashboard/members', \App\Http\Controllers\Website\AddPublisherMemberController::class)->name('publishers.dashboard.members.add');
-    Route::delete('publishers/dashboard/members/{publisherMember}', \App\Http\Controllers\Website\RemovePublisherMemberController::class)->name('publishers.dashboard.members.remove');
-    Route::put('publishers/dashboard/settings', \App\Http\Controllers\Website\UpdatePublisherSettingsController::class)->name('publishers.dashboard.settings.update');
+Route::prefix('publishers/dashboard')->as('publishers.dashboard.')->middleware(['auth:users', \App\Http\Middleware\Publisher::class])->group(function () {
+    Route::get('{segment}', [\App\Http\Controllers\Website\PublisherDashboardController::class, 'index'])->name('index');
+    Route::post('members', \App\Http\Controllers\Website\AddPublisherMemberController::class)->name('members.add');
+    Route::delete('members/{publisherMember}', \App\Http\Controllers\Website\RemovePublisherMemberController::class)->name('members.remove');
+    Route::put('settings', \App\Http\Controllers\Website\UpdatePublisherSettingsController::class)->name('settings.update');
 });
 
 /*

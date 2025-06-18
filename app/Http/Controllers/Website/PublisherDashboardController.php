@@ -17,7 +17,7 @@ class PublisherDashboardController extends Controller
         // Get the publisher account for the current user
         $publisher = current_user()->publisher;
 
-        return view('website.publishers.dashboard', [
+        return view('website.publishers.dashboard.index', [
             'segments' => $segments,
             'segment' => $segment,
             'publisher' => $publisher,
