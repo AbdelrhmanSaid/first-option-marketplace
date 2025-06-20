@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Software extends Model
 {
@@ -20,4 +21,12 @@ class Software extends Model
         'slug',
         'description',
     ];
+
+    /**
+     * Get the addons for the software.
+     */
+    public function addons(): HasMany
+    {
+        return $this->hasMany(Addon::class);
+    }
 }

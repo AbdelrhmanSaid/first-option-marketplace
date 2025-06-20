@@ -96,4 +96,12 @@ class Publisher extends Model
     {
         return $this->members()->where('role', PublisherMemberRole::Admin->value)->get();
     }
+
+    /**
+     * Get the addons for the publisher.
+     */
+    public function addons(): HasMany
+    {
+        return $this->hasMany(Addon::class);
+    }
 }
