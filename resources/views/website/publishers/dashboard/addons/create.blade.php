@@ -4,7 +4,7 @@
 
         <div class="card mb-3">
             <div class="card-header">
-                <p class="card-title">{{ __('Add-on Details') }}</p>
+                <p class="card-title">{{ __('Details') }}</p>
             </div>
 
             <div class="card-body">
@@ -41,7 +41,7 @@
 
         <div class="card mb-3">
             <div class="card-header">
-                <p class="card-title">{{ __('Add-on Requirements') }}</p>
+                <p class="card-title">{{ __('Requirements') }}</p>
             </div>
 
             <div class="card-body">
@@ -76,7 +76,7 @@
 
         <div class="card mb-3">
             <div class="card-header">
-                <p class="card-title">{{ __('Add-on Pricing') }}</p>
+                <p class="card-title">{{ __('Pricing') }}</p>
             </div>
 
             <div class="card-body">
@@ -119,6 +119,7 @@
         </div>
 
         <div class="d-flex justify-content-end">
+            <a href="{{ route('website.publishers.dashboard.index', 'addons') }}" class="btn btn-secondary me-2">{{ __('Cancel') }}</a>
             <button type="submit" class="btn btn-primary">{{ __('Publish') }}</button>
         </div>
     </x-form>

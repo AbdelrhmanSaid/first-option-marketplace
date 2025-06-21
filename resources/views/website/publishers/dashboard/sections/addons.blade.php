@@ -32,6 +32,6 @@
     </div>
 
     <div class="card-footer text-muted">
-        {{ __('Publisher account has :count add-on(s)', ['count' => $publisher->addons->count()]) }}
+        {{ __('Publisher account has :count addon(s)', ['count' => $publisher->addons->count()]) }}
     </div>
 </div>

@@ -35,7 +35,7 @@ class PublisherDashboardController extends Controller
                 'icon' => 'fas fa-home',
                 'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin, PublisherMemberRole::Member],
             ],
-            'add-ons' => [
+            'addons' => [
                 'title' => __('Add-ons'),
                 'icon' => 'fas fa-puzzle-piece',
                 'roles' => [PublisherMemberRole::Owner, PublisherMemberRole::Admin, PublisherMemberRole::Member],

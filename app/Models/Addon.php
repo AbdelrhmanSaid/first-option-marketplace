@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\OS;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Addon extends Model
 {
@@ -54,5 +55,13 @@ class Addon extends Model
     public function software(): BelongsTo
     {
         return $this->belongsTo(Software::class);
+    }
+
+    /**
+     * Get the versions of the addon.
+     */
+    public function versions(): HasMany
+    {
+        return $this->hasMany(AddonVersion::class);
     }
 }
