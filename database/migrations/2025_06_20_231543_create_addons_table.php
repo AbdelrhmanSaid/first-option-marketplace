@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('short_description');
             $table->text('description');
             $table->string('icon');
+            $table->float('price')->nullable();
+            $table->integer('trial_period')->nullable();
             $table->text('instructions')->nullable();
             $table->json('screenshots')->nullable();
             $table->string('youtube_video_url')->nullable();

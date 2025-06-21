@@ -47,27 +47,47 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-md-6 mb-3">
-                        <x-select name="software_id" :query="\App\Models\Software::class" :value="old('software_id')" :title="__('Software')" validation="required" />
+                        <x-select name="software_id" :query="\App\Models\Software::class" :value="old('software_id')" :title="__('Software')"
+                            validation="required" />
                     </div>
 
                     <div class="col-12 col-md-6 mb-3">
-                        <x-select name="os" :options="\App\Enums\OS::toArray()" :value="old('os')" :title="__('OS')" validation="required" />
+                        <x-select name="os" :options="\App\Enums\OS::toArray()" :value="old('os')" :title="__('OS')"
+                            validation="required" />
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-md-6 mb-3">
-                        <x-input type="file" name="resource" :value="old('resource')" :title="__('Resource')" :hint="__('Allowed Extensions: zip rar tar tar.gz gzip tgz pdf msi')" validation="required" />
+                        <x-input type="file" name="resource" :value="old('resource')" :title="__('Resource')" :hint="__('Allowed Extensions: zip rar tar tar.gz gzip tgz pdf msi')"
+                            validation="required" />
                     </div>
 
                     <div class="col-12 col-md-6 mb-3">
-                        <x-input name="version" :value="old('version')" :title="__('Version')" data-mask="99.99.99" validation="required" />
+                        <x-input name="version" :value="old('version')" :title="__('Version')" validation="required" />
                     </div>
                 </div>
 
-
                 <div class="mb-3">
                     <x-rich-editor name="instructions" :value="old('instructions')" :title="__('Instructions')" />
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <p class="card-title">{{ __('Add-on Pricing') }}</p>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-6 mb-3">
+                        <x-input name="price" :value="old('price')" :title="__('Price')" :append="__('EGP')" flat :placeholder="__('Leave empty for free add-on')" />
+                    </div>
+
+                    <div class="col-12 col-md-6 mb-3">
+                        <x-input name="trial_period" :value="old('trial_period')" :title="__('Trial Period')" :append="__('days')" flat :placeholder="__('Leave empty for no trial')" />
+                    </div>
                 </div>
             </div>
         </div>
