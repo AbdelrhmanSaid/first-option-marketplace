@@ -1,3 +1,103 @@
+@font-face {
+    display: swap;
+    font-style: normal;
+    font-family: 'Bricolage Grotesque';
+    font-weight: 100 900;
+    src: url('../fonts/BricolageGrotesque.ttf') format('truetype');
+}
+
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+    font-weight: bold;
+    font-family: 'Bricolage Grotesque', 'Noto Sans Arabic', sans;
+}
+
+.lead {
+    font-size: 1.25rem;
+}
+
+@media screen and (max-width: 768px) {
+    .display-1 {
+        font-size: 3.5rem !important;
+    }
+
+    .display-2 {
+        font-size: 3rem !important;
+    }
+
+    .display-3 {
+        font-size: 2.75rem !important;
+    }
+
+    .display-4 {
+        font-size: 2.5rem !important;
+    }
+
+    .display-5 {
+        font-size: 2.25rem !important;
+    }
+
+    .display-6 {
+        font-size: 2rem !important;
+    }
+
+    .lead {
+        font-size: 1rem !important;
+    }
+}
+
+/* ---------------------------------
+ * Utility Classes
+ * --------------------------------- */
+
+.text-underline-primary {
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--tblr-azure-rgb), 0.2);
+}
+
+.text-underline-secondary {
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--tblr-secondary-color-rgb), 0.2);
+}
+
+.text-underline-success {
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--tblr-success-color-rgb), 0.2);
+}
+
+.text-underline-danger {
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--tblr-danger-color-rgb), 0.2);
+}
+
+.text-underline-warning {
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--tblr-warning-color-rgb), 0.2);
+}
+
+.text-underline-info {
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--tblr-info-color-rgb), 0.2);
+}
+
+.text-underline-azure {
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--tblr-azure-rgb), 0.2);
+}
+
+/* ---------------------------------
+ * Base Layout
+ * --------------------------------- */
+
+.navbar .nav-item .nav-link {
+    color: var(--tblr-body-color);
+    font-weight: 500;
+}
+
 footer .nav .nav-item .nav-link:hover {
     background-color: unset;
     color: var(--tblr-primary);

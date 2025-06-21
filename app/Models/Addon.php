@@ -30,6 +30,7 @@ class Addon extends Model
         'privacy_policy_url',
         'terms_of_service_url',
         'learn_more_url',
+        'is_active',
     ];
 
     /**
@@ -40,6 +41,7 @@ class Addon extends Model
     protected $casts = [
         'screenshots' => 'array',
         'os' => OS::class,
+        'is_active' => 'boolean',
     ];
 
     /**

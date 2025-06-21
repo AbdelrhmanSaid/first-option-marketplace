@@ -85,9 +85,14 @@ $(document).on('submit', 'form:not([disable-validation])', (event) => {
     // No errors, submit the form
     if (isValid) {
         const $submit = $form.find('[type="submit"]');
-        const $spinner = $('<span class="spinner-border spinner-border-sm me-2" role="status"></span>');
 
-        $submit.prepend($spinner);
+        // Don't append the spinner if the button has a data-no-spinner attribute
+        if (!$submit.hasAttr('data-no-spinner')) {
+            const $spinner = $('<span class="spinner-border spinner-border-sm me-2" role="status"></span>');
+
+            $submit.prepend($spinner);
+        }
+
         $submit.prop('disabled', true);
 
         return event.target.submit();
