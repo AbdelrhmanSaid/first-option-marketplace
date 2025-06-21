@@ -16,15 +16,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('publisher_id')->constrained();
             $table->foreignId('software_id')->constrained();
+            $table->enum('os', array_keys(OS::toArray()));
             $table->string('slug')->unique();
             $table->string('name');
             $table->string('short_description');
             $table->text('description');
+            $table->string('icon');
             $table->text('instructions')->nullable();
-            $table->string('icon')->nullable();
             $table->json('screenshots')->nullable();
             $table->string('youtube_video_url')->nullable();
-            $table->enum('os', array_keys(OS::toArray()));
             $table->string('privacy_policy_url')->nullable();
             $table->string('terms_of_service_url')->nullable();
             $table->string('learn_more_url')->nullable();

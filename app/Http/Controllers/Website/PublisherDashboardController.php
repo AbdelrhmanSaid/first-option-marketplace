@@ -15,7 +15,7 @@ class PublisherDashboardController extends Controller
         $segment = array_key_exists($segment, $segments) ? $segment : array_key_first($segments);
 
         // Get the publisher account for the current user
-        $publisher = current_user()->publisher;
+        $publisher = current_publisher();
 
         return view('website.publishers.dashboard.index', [
             'segments' => $segments,

@@ -166,6 +166,14 @@ function current_user(): ?\App\Models\User
 }
 
 /**
+ * Get the current logged in publisher.
+ */
+function current_publisher(): ?\App\Models\Publisher
+{
+    return current_user()->publisher;
+}
+
+/**
  * Render the given component.
  */
 function component(string $name, array $data = []): string|\Illuminate\View\View

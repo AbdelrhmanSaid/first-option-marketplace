@@ -28,6 +28,8 @@ Route::prefix('publishers/dashboard')->as('publishers.dashboard.')->middleware([
     Route::post('members', \App\Http\Controllers\Website\AddPublisherMemberController::class)->name('members.add');
     Route::delete('members/{publisherMember}', \App\Http\Controllers\Website\RemovePublisherMemberController::class)->name('members.remove');
     Route::put('settings', \App\Http\Controllers\Website\UpdatePublisherSettingsController::class)->name('settings.update');
+
+    Route::resource('addons', \App\Http\Controllers\Website\PublisherAddonController::class)->only(['create', 'store']);
 });
 
 /*

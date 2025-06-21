@@ -26,7 +26,7 @@ class UpdatePublisherSettingsController extends Controller
             $validated['logo'] = $this->uploadFile($request->file('logo'), 'publishers');
         }
 
-        current_user()->publisher->update($validated);
+        current_publisher()->update($validated);
 
         return $this->success(__('Publisher settings updated successfully'));
     }

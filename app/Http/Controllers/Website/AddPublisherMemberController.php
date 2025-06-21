@@ -21,7 +21,7 @@ class AddPublisherMemberController extends Controller
             'role' => 'required|string|max:255',
         ]);
 
-        $publisher = current_user()->publisher;
+        $publisher = current_publisher();
         $user = User::where('email', $request->email)->first();
 
         if (! $user) {

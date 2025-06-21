@@ -61,7 +61,7 @@
 
                             <div class="dropdown-divider"></div>
 
-                            @if (current_user()->publisher)
+                            @if (current_publisher())
                                 <a href="{{ route('website.publishers.dashboard.index', 'overview') }}" class="dropdown-item">
                                     <span class="dropdown-item-title">{{ __('Publisher Dashboard') }}</span>
                                 </a>

@@ -2,7 +2,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title">{{ __('Add-ons') }}</h3>
 
-        <a href="#" class="btn btn-icon btn-primary">
+        <a href="{{ route('website.publishers.dashboard.addons.create') }}" class="btn btn-icon btn-primary">
             <i class="fa-solid fa-plus"></i>
         </a>
     </div>
