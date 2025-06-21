@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
-use App\Models\Addon;
 use Illuminate\Http\Request;
 
 class PublisherAddonController extends Controller
