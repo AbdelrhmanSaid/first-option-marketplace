@@ -6,6 +6,7 @@ use App\Enums\OS;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 class Addon extends Model
 {
@@ -40,6 +41,34 @@ class Addon extends Model
         'screenshots' => 'array',
         'os' => OS::class,
     ];
+
+    /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($addon) {
+            if (empty($addon->slug)) {
+                $addon->slug = static::generateUniqueSlug($addon->name);
+            }
+        });
+    }
+
+    /**
+     * Generate a unique slug for the addon.
+     */
+    protected static function generateUniqueSlug(string $name): string
+    {
+        $slug = sprintf('addon-%s-%s', Str::slug($name), Str::random(5));
+
+        if (static::where('slug', $slug)->exists()) {
+            return static::generateUniqueSlug($name);
+        }
+
+        return $slug;
+    }
 
     /**
      * Get the publisher that owns the addon.

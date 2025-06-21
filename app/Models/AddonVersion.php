@@ -15,7 +15,6 @@ class AddonVersion extends Model
     protected $fillable = [
         'addon_id',
         'version',
-        'version_number',
         'resource',
     ];
 

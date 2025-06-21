@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('addon_id')->constrained();
             $table->string('version');
-            $table->integer('version_number');
             $table->string('resource');
             $table->timestamps();
         });

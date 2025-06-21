@@ -82,7 +82,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-md-6 mb-3">
-                        <x-input name="price" :value="old('price')" :title="__('Price')" :append="__('EGP')" flat :placeholder="__('Leave empty for free add-on')" />
+                        <x-input name="price" :value="old('price')" :title="__('Price')" :append="__('EGP per month')" flat :placeholder="__('Leave empty for free add-on')" />
                     </div>
 
                     <div class="col-12 col-md-6 mb-3">

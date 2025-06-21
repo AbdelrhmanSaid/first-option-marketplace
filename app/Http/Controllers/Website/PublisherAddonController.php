@@ -32,7 +32,7 @@ class PublisherAddonController extends Controller
             'description' => 'required|string',
             'screenshots' => 'nullable|json',
             'software_id' => 'required|exists:software,id',
-            'os' => 'required|in:' . implode(',', OS::toArray()),
+            'os' => 'required|in:' . implode(',', array_keys(OS::toArray())),
             'version' => 'required|string',
             'resource' => 'required|file|mimes:zip,rar,tar,gz,tgz,pdf,msi',
             'instructions' => 'nullable|string',
