@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             StaticPageSeeder::class,
             SoftwareSeeder::class,
             CategorySeeder::class,
+            DisciplineSeeder::class,
             PublisherSeeder::class,
             //
         ]);

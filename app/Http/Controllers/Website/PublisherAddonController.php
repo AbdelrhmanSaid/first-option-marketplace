@@ -32,6 +32,8 @@ class PublisherAddonController extends Controller
             'description' => 'required|string',
             'screenshots' => 'nullable|json',
             'software_id' => 'required|exists:software,id',
+            'category_id' => 'required|exists:categories,id',
+            'discipline_id' => 'required|exists:disciplines,id',
             'os' => 'required|in:' . implode(',', array_keys(OS::toArray())),
             'version' => 'required|string',
             'resource' => 'required|file|mimes:zip,rar,tar,gz,tgz,pdf,msi',
@@ -80,6 +82,33 @@ class PublisherAddonController extends Controller
      */
     public function update(Request $request, Addon $addon)
     {
-        // ...
+        $validated = $request->validate([
+            'icon' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:2048',
+            'name' => 'required|string',
+            'short_description' => 'required|string',
+            'description' => 'required|string',
+            'screenshots' => 'nullable|json',
+            'software_id' => 'required|exists:software,id',
+            'category_id' => 'required|exists:categories,id',
+            'discipline_id' => 'required|exists:disciplines,id',
+            'os' => 'required|in:' . implode(',', array_keys(OS::toArray())),
+            'instructions' => 'nullable|string',
+            'price' => 'nullable|numeric|min:0',
+            'trial_period' => 'nullable|integer|min:0',
+            'youtube_video_url' => 'nullable|url',
+            'privacy_policy_url' => 'nullable|url',
+            'terms_of_service_url' => 'nullable|url',
+            'learn_more_url' => 'nullable|url',
+        ]);
+
+        if ($request->hasFile('icon')) {
+            $validated['icon'] = $this->uploadFile($request->file('icon'), 'addons-icons');
+        } else {
+            unset($validated['icon']);
+        }
+
+        $addon->update($validated);
+
+        return $this->success(__('Add-on updated successfully'), 'website.publishers.dashboard.index', 'addons');
     }
 }

@@ -59,6 +59,18 @@
 
                 <div class="row">
                     <div class="col-12 col-md-6 mb-3">
+                        <x-select name="category_id" :query="\App\Models\Category::class" :value="old('category_id')" :title="__('Category')"
+                            validation="required" />
+                    </div>
+
+                    <div class="col-12 col-md-6 mb-3">
+                        <x-select name="discipline_id" :query="\App\Models\Discipline::class" :value="old('discipline_id')" :title="__('Discipline')"
+                            validation="required" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-6 mb-3">
                         <x-input type="file" name="resource" :value="old('resource')" :title="__('Resource')" :hint="__('Allowed Extensions: zip rar tar tar.gz gzip tgz pdf msi')"
                             validation="required" />
                     </div>

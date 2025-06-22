@@ -102,6 +102,6 @@ class Publisher extends Model
      */
     public function addons(): HasMany
     {
-        return $this->hasMany(Addon::class);
+        return $this->hasMany(Addon::class)->with(['category', 'discipline', 'software', 'versions']);
     }
 }

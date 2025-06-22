@@ -137,6 +137,20 @@
                     </span>
                 @endif
 
+                @if ($addon->category)
+                    <span class="addon-tag">
+                        <i class="fas fa-folder" style="font-size: 10px;"></i>
+                        {{ $addon->category->name }}
+                    </span>
+                @endif
+
+                @if ($addon->discipline)
+                    <span class="addon-tag">
+                        <i class="fas fa-graduation-cap" style="font-size: 10px;"></i>
+                        {{ $addon->discipline->name }}
+                    </span>
+                @endif
+
                 @if ($addon->os)
                     <span class="addon-tag">
                         <i class="fas fa-desktop" style="font-size: 10px;"></i>

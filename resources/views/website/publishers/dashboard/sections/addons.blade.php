@@ -7,9 +7,13 @@
 </x-page-header>
 
 <div class="row">
-    @foreach ($publisher->addons as $addon)
+    @forelse ($publisher->addons as $addon)
         <div class="col-md-6">
             <x-addon-card :addon="$addon" :link="route('website.publishers.dashboard.addons.edit', $addon->slug)" />
         </div>
-    @endforeach
+    @empty
+        <div class="col-12">
+            <x-empty />
+        </div>
+    @endforelse
 </div>

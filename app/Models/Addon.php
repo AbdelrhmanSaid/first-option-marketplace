@@ -18,6 +18,8 @@ class Addon extends Model
     protected $fillable = [
         'publisher_id',
         'software_id',
+        'category_id',
+        'discipline_id',
         'slug',
         'name',
         'short_description',
@@ -96,6 +98,22 @@ class Addon extends Model
     public function software(): BelongsTo
     {
         return $this->belongsTo(Software::class);
+    }
+
+    /**
+     * Get the category that owns the addon.
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Get the discipline that owns the addon.
+     */
+    public function discipline(): BelongsTo
+    {
+        return $this->belongsTo(Discipline::class);
     }
 
     /**

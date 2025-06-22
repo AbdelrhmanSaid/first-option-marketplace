@@ -16,6 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('publisher_id')->constrained();
             $table->foreignId('software_id')->constrained();
+            $table->foreignId('category_id')->constrained();
+            $table->foreignId('discipline_id')->constrained();
             $table->enum('os', array_keys(OS::toArray()));
             $table->string('slug')->unique();
             $table->string('name');
