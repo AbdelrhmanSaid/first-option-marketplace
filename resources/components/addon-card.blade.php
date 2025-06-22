@@ -2,15 +2,13 @@
     <style>
         .addon-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--tblr-border-color);
             border-radius: 12px;
             overflow: hidden;
         }
 
         .addon-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-color: #d1d5db;
         }
 
         .addon-card .addon-header {
@@ -35,13 +33,13 @@
 
         .addon-card .addon-meta {
             font-size: 12px;
-            color: #6b7280;
+            color: var(--tblr-muted);
             margin-top: 4px;
         }
 
         .addon-card .addon-description {
             font-size: 13px;
-            color: #6b7280;
+            color: var(--tblr-muted);
             line-height: 1.4;
             margin: 12px 0 0 0;
             display: -webkit-box;
@@ -58,8 +56,8 @@
         }
 
         .addon-card .addon-tag {
-            background: #f3f4f6;
-            color: #6b7280;
+            background: var(--tblr-bg-surface-secondary);
+            color: var(--tblr-muted);
             font-size: 11px;
             padding: 4px 8px;
             border-radius: 6px;
@@ -75,18 +73,18 @@
         .addon-card .price-main {
             font-size: 18px;
             font-weight: 700;
-            color: #059669;
+            color: var(--tblr-success);
         }
 
         .addon-card .price-period {
             font-size: 12px;
-            color: #6b7280;
+            color: var(--tblr-muted);
             margin-left: 2px;
         }
 
         .addon-card .price-trial {
             font-size: 11px;
-            color: #059669;
+            color: var(--tblr-success);
             margin-top: 2px;
         }
 
@@ -108,7 +106,7 @@
 
                 <div class="flex-grow-1 min-w-0">
                     <h5 class="addon-title">
-                        <a href="{{ $link }}" class="text-decoration-none text-dark stretched-link">
+                        <a href="{{ $link }}" class="text-decoration-none stretched-link">
                             {{ $addon->name }}
                         </a>
                     </h5>
