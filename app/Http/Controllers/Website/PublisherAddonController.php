@@ -64,4 +64,22 @@ class PublisherAddonController extends Controller
 
         return $this->success(__('Add-on created successfully'), 'website.publishers.dashboard.index', 'addons');
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Addon $addon)
+    {
+        return view('website.publishers.dashboard.addons.edit', [
+            'addon' => $addon,
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Addon $addon)
+    {
+        // ...
+    }
 }

@@ -24,6 +24,8 @@ class Addon extends Model
         'description',
         'instructions',
         'icon',
+        'price',
+        'trial_period',
         'screenshots',
         'youtube_video_url',
         'os',
@@ -70,6 +72,14 @@ class Addon extends Model
         }
 
         return $slug;
+    }
+
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 
     /**
