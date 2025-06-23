@@ -13,6 +13,20 @@
         <div class="navbar-collapse collapse" id="navbar">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
+                    <a href="{{ route('website.addons.index') }}" class="nav-link">
+                        <span class="nav-link-icon"><i class="fa fa-puzzle-piece"></i></span>
+                        <span class="nav-link-title">{{ __('Addons') }}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('website.publishers.index') }}" class="nav-link">
+                        <span class="nav-link-icon"><i class="fa fa-building"></i></span>
+                        <span class="nav-link-title">{{ __('Publishers') }}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="#" data-theme="dark" class="nav-link hide-theme-dark">
                         <span class="nav-link-icon"><i class="fa fa-moon"></i></span>
                         <span class="nav-link-title">{{ __('Dark mode') }}</span>

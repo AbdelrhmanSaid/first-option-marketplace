@@ -17,6 +17,7 @@ Route::get('r/{shortenedUrl?}', [\App\Http\Controllers\Website\ShortenedUrlContr
 
 Route::get('static-pages/{staticPage}', [\App\Http\Controllers\Website\StaticPageController::class, 'show'])->name('static-pages.show');
 Route::resource('publishers', \App\Http\Controllers\Website\PublisherController::class)->only(['index', 'create', 'store', 'show']);
+Route::resource('addons', \App\Http\Controllers\Website\AddonController::class)->only(['index', 'show']);
 
 Route::middleware('auth:users')->group(function () {
     Route::get('profile', [\App\Http\Controllers\Website\ProfileController::class, 'edit'])->name('profile.edit');

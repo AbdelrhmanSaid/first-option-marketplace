@@ -76,11 +76,17 @@
         </div>
 
         <div class="row">
-            @foreach ($publisher->addons as $addon)
+            @forelse ($publisher->addons as $addon)
                 <div class="col-12 col-md-6 col-lg-4 mb-3">
                     <x-addon-card :addon="$addon" :show-publisher="false" />
                 </div>
-            @endforeach
+            @empty
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        {{ __('No addons found.') }}
+                    </div>
+                </div>
+            @endforelse
         </div>
     </div>
 </x-layouts::website>
