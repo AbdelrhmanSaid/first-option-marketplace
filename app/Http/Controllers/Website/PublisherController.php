@@ -13,7 +13,7 @@ class PublisherController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:users')->except(['show']);
+        $this->middleware('auth:users')->except(['index', 'show']);
     }
 
     /**

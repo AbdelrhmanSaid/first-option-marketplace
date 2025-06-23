@@ -15,7 +15,7 @@
         <h1 class="h2 mb-4">{{ __('Publishers') }}</h1>
 
         <div class="row">
-            @foreach ($publishers as $publisher)
+            @forelse ($publishers as $publisher)
                 <div class="col-12 col-md-6 col-lg-4 mb-3 publisher-card">
                     <div class="card">
                         <div class="card-body">
@@ -37,7 +37,11 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-12">
+                    <x-empty :title="__('No publishers found')" />
+                </div>
+            @endforelse
         </div>
 
         {{ $publishers->links() }}

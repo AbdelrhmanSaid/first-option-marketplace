@@ -6,11 +6,15 @@
         </div>
 
         <div class="row">
-            @foreach ($addons as $addon)
+            @forelse ($addons as $addon)
                 <div class="col-12 col-md-6 col-lg-4 mb-3">
                     <x-addon-card :addon="$addon" :link="route('website.addons.show', $addon)" />
                 </div>
-            @endforeach
+            @empty
+                <div class="col-12">
+                    <x-empty :title="__('No addons found')" />
+                </div>
+            @endforelse
         </div>
 
         {{ $addons->links() }}
