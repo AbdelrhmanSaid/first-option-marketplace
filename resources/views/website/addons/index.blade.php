@@ -17,6 +17,8 @@
             @endforelse
         </div>
 
-        {{ $addons->links() }}
+        <div class="mt-3">
+            {{ $addons->links() }}
+        </div>
     </div>
 </x-layouts::website>

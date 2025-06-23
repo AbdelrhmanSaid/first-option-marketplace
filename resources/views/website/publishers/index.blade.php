@@ -44,6 +44,8 @@
             @endforelse
         </div>
 
-        {{ $publishers->links() }}
+        <div class="mt-3">
+            {{ $publishers->links() }}
+        </div>
     </div>
 </x-layouts::website>
