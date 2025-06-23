@@ -44,6 +44,8 @@ class PublisherAddonController extends Controller
             'privacy_policy_url' => 'nullable|url',
             'terms_of_service_url' => 'nullable|url',
             'learn_more_url' => 'nullable|url',
+            'tags' => 'nullable|array|max:3',
+            'tags.*' => 'string|max:50',
         ]);
 
         if ($request->hasFile('icon')) {
@@ -99,6 +101,8 @@ class PublisherAddonController extends Controller
             'privacy_policy_url' => 'nullable|url',
             'terms_of_service_url' => 'nullable|url',
             'learn_more_url' => 'nullable|url',
+            'tags' => 'nullable|array|max:3',
+            'tags.*' => 'string|max:50',
         ]);
 
         if ($request->hasFile('icon')) {

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\OS;
+use App\Traits\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,6 +11,8 @@ use Illuminate\Support\Str;
 
 class Addon extends Model
 {
+    use Taggable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -35,6 +38,7 @@ class Addon extends Model
         'terms_of_service_url',
         'learn_more_url',
         'is_active',
+        'tags',
     ];
 
     /**
@@ -44,6 +48,7 @@ class Addon extends Model
      */
     protected $casts = [
         'screenshots' => 'array',
+        'tags' => 'array',
         'os' => OS::class,
         'is_active' => 'boolean',
     ];

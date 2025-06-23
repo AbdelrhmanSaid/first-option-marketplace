@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('terms_of_service_url')->nullable();
             $table->string('learn_more_url')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->json('tags')->nullable();
             $table->timestamps();
         });
     }

@@ -162,6 +162,15 @@
                         {{ $version }}
                     </span>
                 @endif
+
+                @if ($addon->tags && is_array($addon->tags) && count($addon->tags) > 0)
+                    @foreach (array_slice($addon->tags, 0, 3) as $tag)
+                        <span class="addon-tag">
+                            <i class="fas fa-hashtag" style="font-size: 10px;"></i>
+                            {{ $tag }}
+                        </span>
+                    @endforeach
+                @endif
             </div>
         </div>
 

@@ -35,6 +35,10 @@
                 </div>
 
                 <div class="mb-3">
+                    <x-select name="tags[]" :title="__('Tags')" :options="\App\Models\Addon::tags()" :value="old('tags', $addon->tags)" tags multiple :hint="__('You can select up to 3 tags')" validation="max:3" />
+                </div>
+
+                <div class="mb-3">
                     <x-uploader name="screenshots" :title="__('Screenshots')" :value="old('screenshots', $addon->screenshots)" />
                 </div>
             </div>
