@@ -17,6 +17,18 @@ class PublisherController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $publishers = Publisher::query()->orderBy('name')->paginate(10);
+
+        return view('website.publishers.index', [
+            'publishers' => $publishers,
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
