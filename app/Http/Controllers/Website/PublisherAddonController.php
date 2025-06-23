@@ -74,6 +74,8 @@ class PublisherAddonController extends Controller
      */
     public function edit(Addon $addon)
     {
+        $this->authorize('update', $addon);
+
         return view('website.publishers.dashboard.addons.edit', [
             'addon' => $addon,
         ]);
@@ -84,6 +86,8 @@ class PublisherAddonController extends Controller
      */
     public function update(Request $request, Addon $addon)
     {
+        $this->authorize('update', $addon);
+
         $validated = $request->validate([
             'icon' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:2048',
             'name' => 'required|string',
