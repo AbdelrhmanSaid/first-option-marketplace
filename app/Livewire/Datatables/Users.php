@@ -5,7 +5,7 @@ namespace App\Livewire\Datatables;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Redot\Datatables\Actions\Action;
-use Redot\Datatables\Columns\BadgeColumn;
+use Redot\Datatables\Columns\TernaryColumn;
 use Redot\Datatables\Columns\TextColumn;
 use Redot\Datatables\Datatable;
 use Redot\Datatables\Filters\StringFilter;
@@ -37,7 +37,7 @@ class Users extends Datatable
                 ->width('300px')
                 ->email()
                 ->searchable(),
-            BadgeColumn::make('email_verified_at', __('Verified')),
+            TernaryColumn::make('email_verified_at', __('Verified')),
         ];
     }
 

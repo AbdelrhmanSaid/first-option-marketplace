@@ -7,7 +7,7 @@ use App\Models\LanguageToken;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Url;
 use Redot\Datatables\Actions\Action;
-use Redot\Datatables\Columns\BadgeColumn;
+use Redot\Datatables\Columns\TernaryColumn;
 use Redot\Datatables\Columns\TextColumn;
 use Redot\Datatables\Datatable;
 use Redot\Datatables\Filters\StringFilter;
@@ -62,8 +62,8 @@ class LanguageTokens extends Datatable
                 ->truncate(50)
                 ->searchable()
                 ->sortable(),
-            BadgeColumn::make('is_published', __('Published')),
-            BadgeColumn::make('is_modified', __('Modified')),
+            TernaryColumn::make('is_published', __('Published')),
+            TernaryColumn::make('is_modified', __('Modified')),
         ];
     }
 

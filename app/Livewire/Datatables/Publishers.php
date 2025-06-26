@@ -4,7 +4,7 @@ namespace App\Livewire\Datatables;
 
 use App\Models\Publisher;
 use Illuminate\Database\Eloquent\Builder;
-use Redot\Datatables\Columns\BadgeColumn;
+use Redot\Datatables\Columns\TernaryColumn;
 use Redot\Datatables\Columns\TextColumn;
 use Redot\Datatables\Datatable;
 use Redot\Datatables\Filters\StringFilter;
@@ -42,7 +42,7 @@ class Publishers extends Datatable
                 ->url()
                 ->searchable()
                 ->sortable(),
-            BadgeColumn::make('is_verified', __('Verified'))
+            TernaryColumn::make('is_verified', __('Verified'))
                 ->sortable(),
         ];
     }

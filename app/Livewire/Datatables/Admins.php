@@ -5,7 +5,7 @@ namespace App\Livewire\Datatables;
 use App\Models\Admin;
 use Illuminate\Database\Eloquent\Builder;
 use Redot\Datatables\Actions\Action;
-use Redot\Datatables\Columns\BadgeColumn;
+use Redot\Datatables\Columns\TernaryColumn;
 use Redot\Datatables\Columns\TextColumn;
 use Redot\Datatables\Datatable;
 use Redot\Datatables\Filters\StringFilter;
@@ -40,7 +40,7 @@ class Admins extends Datatable
             TextColumn::make('email', __('Email'))
                 ->email()
                 ->searchable(),
-            BadgeColumn::make('active', __('Active')),
+            TernaryColumn::make('active', __('Active')),
         ];
     }
 
