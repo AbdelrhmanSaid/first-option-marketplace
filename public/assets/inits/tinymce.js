@@ -12,7 +12,8 @@ return async (selector, options = {}) => {
         return;
     }
 
-    const theme = localStorage.getItem(`${window.themerKey}-theme`) || 'light';
+    // Get the theme from the data-bs-theme attribute
+    const theme = $('[data-bs-theme]').attr('data-bs-theme');
 
     options = Object.assign({}, options, {
         selector: '#' + $(selector).attr('id'),

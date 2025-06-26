@@ -111,11 +111,20 @@ class PublisherAddonController extends Controller
 
         if ($request->hasFile('icon')) {
             $validated['icon'] = $this->uploadFile($request->file('icon'), 'addons-icons');
-        } else {
-            unset($validated['icon']);
+        }
+
+        if ($request->hasFile('resource')) {
+            $validated['resource'] = $this->uploadFile($request->file('resource'), 'addons-resources');
         }
 
         $addon->update($validated);
+
+        if ($request->has('is_update')) {
+            $addon->versions()->create([
+                'version' => $request->version,
+                'resource' => $validated['resource'],
+            ]);
+        }
 
         return $this->success(__('Add-on updated successfully'), 'website.publishers.dashboard.index', 'addons');
     }

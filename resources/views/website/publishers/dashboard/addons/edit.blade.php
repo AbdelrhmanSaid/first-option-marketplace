@@ -82,6 +82,47 @@
 
         <div class="card mb-3">
             <div class="card-header">
+                <p class="card-title">{{ __('Add-on Versions') }}</p>
+            </div>
+
+            <div class="card-body">
+                <div class="mb-3">
+                    <x-toggle name="is_update" :title="__('Publish a new version for this add-on')" :value="old('is_update', false)" :on="__('Yes')" :off="__('No')" />
+                </div>
+
+                <div class="row gy-3" visible-when="$is_update">
+                    <div class="col-12 col-md-6">
+                        <x-input type="file" name="resource" :value="old('resource')" :title="__('Resource')" :hint="__('Allowed Extensions: zip rar tar tar.gz gzip tgz pdf msi')"
+                            validation="required" />
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <x-input name="version" :value="old('version')" :title="__('Version')" validation="required" />
+                    </div>
+                </div>
+            </div>
+
+            <table class="table card-table">
+                <thead>
+                    <tr>
+                        <th class="w-50">{{ __('Version') }}</th>
+                        <th class="w-50">{{ __('Release Date') }}</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach ($addon->versions as $version)
+                        <tr>
+                            <td>{{ $version->version }}</td>
+                            <td>{{ $version->created_at->format('l, d F Y h:i A') }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
                 <p class="card-title">{{ __('Pricing') }}</p>
             </div>
 

@@ -2,15 +2,15 @@
     <div class="container py-4">
         <div class="row">
             <div class="col-lg-8">
-                @include('website.addons.partials.main_card')
-                @include('website.addons.partials.description_card')
-                @include('website.addons.partials.links_card')
+                @include('website.addons.partials.main')
+                @include('website.addons.partials.description')
+                @include('website.addons.partials.links')
             </div>
 
             <div class="col-lg-4">
                 <div class="sidebar-sticky">
-                    @include('website.addons.partials.purchase_card')
-                    @include('website.addons.partials.details_card')
+                    @include('website.addons.partials.purchase')
+                    @include('website.addons.partials.details')
                 </div>
             </div>
         </div>
