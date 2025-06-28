@@ -128,4 +128,12 @@ class Addon extends Model
     {
         return $this->hasMany(AddonVersion::class);
     }
+
+    /**
+     * Scope a query to only include featured addons.
+     */
+    public function scopeFeatured($query)
+    {
+        return $query->where('is_active', true)->orderBy('created_at', 'desc');
+    }
 }

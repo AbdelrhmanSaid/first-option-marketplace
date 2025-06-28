@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Models\Addon;
+
 class HomeController extends Controller
 {
     /**
@@ -11,6 +13,8 @@ class HomeController extends Controller
      */
     public function __invoke()
     {
-        return view('website.home.index');
+        return view('website.home.index', [
+            'featuredAddons' => Addon::featured()->take(6)->get(),
+        ]);
     }
 }
