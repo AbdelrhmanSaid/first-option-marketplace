@@ -6,7 +6,6 @@ use App\Enums\OS;
 use App\Models\Addon;
 use App\Traits\CanUploadFile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class PublisherAddonController extends Controller
 {
