@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Enums\OS;
 use App\Http\Controllers\Controller;
 use App\Models\Addon;
 use App\Models\Category;
 use App\Models\Discipline;
 use App\Models\Software;
-use App\Enums\OS;
 use Illuminate\Http\Request;
 
 class AddonController extends Controller
@@ -26,9 +26,9 @@ class AddonController extends Controller
             $search = $request->get('search');
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'LIKE', "%{$search}%")
-                  ->orWhere('short_description', 'LIKE', "%{$search}%")
-                  ->orWhere('description', 'LIKE', "%{$search}%")
-                  ->orWhereJsonContains('tags', $search);
+                    ->orWhere('short_description', 'LIKE', "%{$search}%")
+                    ->orWhere('description', 'LIKE', "%{$search}%")
+                    ->orWhereJsonContains('tags', $search);
             });
         }
 
@@ -109,7 +109,7 @@ class AddonController extends Controller
                 if ($request->filled('search')) {
                     // For search, order by relevance (exact matches first)
                     $search = $request->get('search');
-                    $query->orderByRaw("CASE WHEN name = ? THEN 1 WHEN name LIKE ? THEN 2 ELSE 3 END", [$search, "%{$search}%"]);
+                    $query->orderByRaw('CASE WHEN name = ? THEN 1 WHEN name LIKE ? THEN 2 ELSE 3 END', [$search, "%{$search}%"]);
                 } else {
                     // Default: newest first
                     $query->orderBy('created_at', 'desc');
