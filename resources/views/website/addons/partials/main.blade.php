@@ -1,7 +1,7 @@
 <div class="card mb-3">
     <div class="card-body">
         <div class="d-flex flex-column flex-md-row align-items-center gap-4">
-            <x-avatar :image="$addon->icon" :name="$addon->name" size="xl" />
+            <x-avatar :image="$addon->icon" :name="$addon->name" size="xl" style="min-width: var(--tblr-avatar-size)" />
 
             <div class="flex-grow-1">
                 <h1 class="h2 mb-0 d-flex align-items-center gap-2 justify-content-center justify-content-md-start">
