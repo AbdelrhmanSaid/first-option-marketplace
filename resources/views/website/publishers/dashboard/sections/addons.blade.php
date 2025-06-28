@@ -6,7 +6,7 @@
     </a>
 </x-page-header>
 
-<div class="row">
+<div class="row g-4">
     @forelse ($publisher->addons as $addon)
         <div class="col-md-6">
             <x-addon-card :addon="$addon" :link="route('website.publishers.dashboard.addons.edit', $addon->slug)" />

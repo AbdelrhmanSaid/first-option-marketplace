@@ -75,7 +75,7 @@
             <div class="page-pretitle">{{ __('Addons by') }} {{ $publisher->name }}</div>
         </div>
 
-        <div class="row">
+        <div class="row g-4">
             @forelse ($publisher->addons as $addon)
                 <div class="col-12 col-md-6 col-lg-4 mb-3">
                     <x-addon-card :addon="$addon" :show-publisher="false" />
