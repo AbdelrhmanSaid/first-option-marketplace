@@ -307,7 +307,7 @@
                 @endif
 
                 <!-- Addons Grid -->
-                <div class="row" id="addonsContainer">
+                <div class="row g-4" id="addonsContainer">
                     @forelse ($addons as $addon)
                         <div class="col-md-6">
                             <x-addon-card :addon="$addon" :link="route('website.addons.show', $addon)" />
