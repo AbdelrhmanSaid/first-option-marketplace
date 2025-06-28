@@ -61,9 +61,7 @@ class Addon extends Model
         parent::boot();
 
         static::creating(function ($addon) {
-            if (empty($addon->slug)) {
-                $addon->slug = static::generateUniqueSlug($addon->name);
-            }
+            $addon->slug = static::generateUniqueSlug($addon->name);
         });
     }
 

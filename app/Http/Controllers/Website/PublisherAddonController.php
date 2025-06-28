@@ -58,7 +58,6 @@ class PublisherAddonController extends Controller
 
         $addon = Addon::create(collect($validated)->except(['version', 'resource'])->merge([
             'publisher_id' => current_publisher()->id,
-            'slug' => Str::slug($request->name),
         ])->toArray());
 
         $addon->versions()->create([
