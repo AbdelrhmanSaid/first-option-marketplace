@@ -35,7 +35,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <x-select name="tags[]" :title="__('Tags')" :options="\App\Models\Addon::tags()" :value="old('tags', $addon->tags)" select-max-items="3" tags multiple :hint="__('You can select up to 3 tags')" validation="max:3" />
+                    <x-select name="tags[]" :title="__('Tags')" :options="\App\Models\Addon::tags()" :value="old('tags', $addon->tags)"
+                        select-max-items="3" tags multiple :hint="__('You can select up to 3 tags')" validation="max:3" />
                 </div>
 
                 <div class="mb-3">
@@ -87,7 +88,8 @@
 
             <div class="card-body">
                 <div class="mb-3">
-                    <x-toggle name="is_update" :title="__('Publish a new version for this add-on')" :value="old('is_update', false)" :on="__('Yes')" :off="__('No')" />
+                    <x-toggle name="is_update" :title="__('Publish a new version for this add-on')" :value="old('is_update', false)" :on="__('Yes')"
+                        :off="__('No')" />
                 </div>
 
                 <div class="row gy-3" visible-when="$is_update">
@@ -129,11 +131,8 @@
             <div class="card-body">
                 {{-- Subscription Type Selection --}}
                 <div class="mb-4">
-                    <x-select name="subscription_type"
-                              :options="['one_time' => __('One-time Purchase'), 'subscription' => __('Subscription')]"
-                              :value="old('subscription_type', $addon->subscription_type ?? 'one_time')"
-                              :title="__('Pricing Model')"
-                              validation="required" />
+                    <x-select name="subscription_type" :options="['one_time' => __('One-time Purchase'), 'subscription' => __('Subscription')]" :value="old('subscription_type', $addon->subscription_type ?? 'one_time')" :title="__('Pricing Model')"
+                        validation="required" />
                 </div>
 
                 {{-- One-time Purchase Pricing --}}
@@ -141,21 +140,13 @@
                     <h6 class="mb-3">{{ __('One-time Purchase Pricing') }}</h6>
                     <div class="row">
                         <div class="col-12 col-md-6 mb-3">
-                            <x-input name="price"
-                                     :value="old('price', $addon->price)"
-                                     :title="__('Price')"
-                                     :append="__('USD')"
-                                     flat
-                                     :placeholder="__('Leave empty for free add-on')" />
+                            <x-input name="price" :value="old('price', $addon->price)" :title="__('Price')" :append="__('EGP')" flat
+                                :placeholder="__('Leave empty for free add-on')" />
                         </div>
 
                         <div class="col-12 col-md-6 mb-3">
-                            <x-input name="trial_period"
-                                     :value="old('trial_period', $addon->trial_period)"
-                                     :title="__('Trial Period')"
-                                     :append="__('days')"
-                                     flat
-                                     :placeholder="__('Leave empty for no trial')" />
+                            <x-input name="trial_period" :value="old('trial_period', $addon->trial_period)" :title="__('Trial Period')" :append="__('days')" flat
+                                :placeholder="__('Leave empty for no trial')" />
                         </div>
                     </div>
                 </div>
@@ -166,42 +157,26 @@
 
                     <div class="row mb-3">
                         <div class="col-12">
-                            <x-input name="trial_period"
-                                     :value="old('trial_period', $addon->trial_period)"
-                                     :title="__('Trial Period')"
-                                     :append="__('days')"
-                                     flat
-                                     :placeholder="__('Leave empty for no trial')" />
+                            <x-input name="trial_period" :value="old('trial_period', $addon->trial_period)" :title="__('Trial Period')" :append="__('days')" flat
+                                :placeholder="__('Leave empty for no trial')" />
                             <small class="text-muted">{{ __('Free trial period before subscription starts') }}</small>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-12 col-md-4 mb-3">
-                            <x-input name="monthly_price"
-                                     :value="old('monthly_price', $addon->monthly_price)"
-                                     :title="__('Monthly Price')"
-                                     :append="__('USD/month')"
-                                     flat
-                                     :placeholder="__('0.00')" />
+                            <x-input name="monthly_price" :value="old('monthly_price', $addon->monthly_price)" :title="__('Monthly Price')" :append="__('EGP/month')" flat
+                                :placeholder="__('0.00')" />
                         </div>
 
                         <div class="col-12 col-md-4 mb-3">
-                            <x-input name="quarterly_price"
-                                     :value="old('quarterly_price', $addon->quarterly_price)"
-                                     :title="__('Quarterly Price')"
-                                     :append="__('USD/3 months')"
-                                     flat
-                                     :placeholder="__('0.00')" />
+                            <x-input name="quarterly_price" :value="old('quarterly_price', $addon->quarterly_price)" :title="__('Quarterly Price')" :append="__('EGP/3 months')"
+                                flat :placeholder="__('0.00')" />
                         </div>
 
                         <div class="col-12 col-md-4 mb-3">
-                            <x-input name="yearly_price"
-                                     :value="old('yearly_price', $addon->yearly_price)"
-                                     :title="__('Yearly Price')"
-                                     :append="__('USD/year')"
-                                     flat
-                                     :placeholder="__('0.00')" />
+                            <x-input name="yearly_price" :value="old('yearly_price', $addon->yearly_price)" :title="__('Yearly Price')" :append="__('EGP/year')" flat
+                                :placeholder="__('0.00')" />
                         </div>
                     </div>
 
@@ -214,31 +189,31 @@
         </div>
 
         @push('scripts')
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const subscriptionTypeSelect = document.querySelector('select[name="subscription_type"]');
-                const pricingSections = document.querySelectorAll('.pricing-section');
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const subscriptionTypeSelect = document.querySelector('select[name="subscription_type"]');
+                    const pricingSections = document.querySelectorAll('.pricing-section');
 
-                function togglePricingSections() {
-                    const selectedType = subscriptionTypeSelect.value;
+                    function togglePricingSections() {
+                        const selectedType = subscriptionTypeSelect.value;
 
-                    pricingSections.forEach(section => {
-                        const sectionType = section.getAttribute('data-pricing-type');
-                        if (sectionType === selectedType) {
-                            section.style.display = 'block';
-                        } else {
-                            section.style.display = 'none';
-                        }
-                    });
-                }
+                        pricingSections.forEach(section => {
+                            const sectionType = section.getAttribute('data-pricing-type');
+                            if (sectionType === selectedType) {
+                                section.style.display = 'block';
+                            } else {
+                                section.style.display = 'none';
+                            }
+                        });
+                    }
 
-                // Initial toggle
-                togglePricingSections();
+                    // Initial toggle
+                    togglePricingSections();
 
-                // Listen for changes
-                subscriptionTypeSelect.addEventListener('change', togglePricingSections);
-            });
-        </script>
+                    // Listen for changes
+                    subscriptionTypeSelect.addEventListener('change', togglePricingSections);
+                });
+            </script>
         @endpush
 
         <div class="card mb-3">
@@ -268,7 +243,8 @@
         </div>
 
         <div class="d-flex justify-content-end">
-            <a href="{{ route('website.publishers.dashboard.index', 'addons') }}" class="btn btn-secondary me-2">{{ __('Cancel') }}</a>
+            <a href="{{ route('website.publishers.dashboard.index', 'addons') }}"
+                class="btn btn-secondary me-2">{{ __('Cancel') }}</a>
             <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
         </div>
     </x-form>
