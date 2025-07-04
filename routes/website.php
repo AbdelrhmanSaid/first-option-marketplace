@@ -22,6 +22,45 @@ Route::resource('addons', \App\Http\Controllers\Website\AddonController::class)-
 Route::middleware('auth:users')->group(function () {
     Route::get('profile', [\App\Http\Controllers\Website\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [\App\Http\Controllers\Website\ProfileController::class, 'update'])->name('profile.update');
+
+    // Addon Purchase Routes
+    Route::post('addons/{addon}/purchase', [\App\Http\Controllers\Website\AddonPurchaseController::class, 'purchase'])->name('addons.purchase');
+
+    // Library Routes
+    Route::get('library', [\App\Http\Controllers\Website\LibraryController::class, 'index'])->name('library.index');
+    Route::get('library/{userAddon}', [\App\Http\Controllers\Website\LibraryController::class, 'show'])->name('library.show');
+
+    // Subscription Management Routes
+    Route::prefix('subscriptions')->as('subscriptions.')->group(function () {
+        // Renewal routes
+        Route::get('{userAddon}/renew', [\App\Http\Controllers\Website\SubscriptionController::class, 'showRenewal'])->name('renewal');
+        Route::post('{userAddon}/renew', [\App\Http\Controllers\Website\SubscriptionController::class, 'processRenewal'])->name('renewal.process');
+        Route::get('{userAddon}/payment', [\App\Http\Controllers\Website\SubscriptionController::class, 'showPayment'])->name('payment');
+        Route::post('{userAddon}/payment', [\App\Http\Controllers\Website\SubscriptionController::class, 'processPayment'])->name('payment.process');
+        Route::get('{userAddon}/success', [\App\Http\Controllers\Website\SubscriptionController::class, 'showSuccess'])->name('success');
+
+        // Subscription management routes
+        Route::post('{userAddon}/cancel', [\App\Http\Controllers\Website\SubscriptionController::class, 'cancel'])->name('cancel');
+        Route::post('{userAddon}/reactivate', [\App\Http\Controllers\Website\SubscriptionController::class, 'reactivate'])->name('reactivate');
+
+        // Trial conversion routes
+        Route::get('{userAddon}/convert', [\App\Http\Controllers\Website\SubscriptionController::class, 'showTrialConversion'])->name('trial-conversion');
+        Route::post('{userAddon}/convert', [\App\Http\Controllers\Website\SubscriptionController::class, 'processTrialConversion'])->name('trial-conversion.process');
+        Route::get('{userAddon}/convert-payment', [\App\Http\Controllers\Website\SubscriptionController::class, 'showConversionPayment'])->name('conversion-payment');
+        Route::post('{userAddon}/convert-payment', [\App\Http\Controllers\Website\SubscriptionController::class, 'processConversionPayment'])->name('conversion-payment.process');
+        Route::get('{userAddon}/convert-success', [\App\Http\Controllers\Website\SubscriptionController::class, 'showConversionSuccess'])->name('conversion-success');
+    });
+
+    // Mock Payment Gateway Routes
+    Route::get('payment/{addon}', [\App\Http\Controllers\Website\MockPaymentController::class, 'create'])->name('payment.create');
+    Route::post('payment/{addon}/process', [\App\Http\Controllers\Website\MockPaymentController::class, 'process'])->name('payment.process');
+    Route::get('payment/{addon}/success', [\App\Http\Controllers\Website\MockPaymentController::class, 'paymentSuccess'])->name('payment.success');
+    Route::get('payment/{addon}/failure', [\App\Http\Controllers\Website\MockPaymentController::class, 'failure'])->name('payment.failure');
+
+    // Subscription Payment Routes
+    Route::get('payment/{addon}/subscription', [\App\Http\Controllers\Website\MockPaymentController::class, 'createSubscription'])->name('payment.subscription');
+    Route::post('payment/{addon}/subscription', [\App\Http\Controllers\Website\MockPaymentController::class, 'processSubscription'])->name('payment.subscription.process');
+    Route::get('payment/{addon}/subscription-success', [\App\Http\Controllers\Website\MockPaymentController::class, 'subscriptionSuccess'])->name('payment.subscription-success');
 });
 
 Route::prefix('publishers/dashboard')->as('publishers.dashboard.')->middleware(['auth:users', \App\Http\Middleware\Publisher::class])->group(function () {

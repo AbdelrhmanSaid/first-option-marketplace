@@ -78,7 +78,7 @@
         <div class="row g-4">
             @forelse ($publisher->addons as $addon)
                 <div class="col-12 col-md-6 col-lg-4 mb-3">
-                    <x-addon-card :addon="$addon" :show-publisher="false" />
+                    <x-addon-card :addon="$addon" :show-publisher="false" :link="route('website.addons.show', $addon)" />
                 </div>
             @empty
                 <div class="col-12">

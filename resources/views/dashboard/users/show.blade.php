@@ -35,9 +35,9 @@
                     <div class="datagrid-title">{{ __('Verified') }}</div>
                     <div class="datagrid-content">
                         @if ($user->email_verified_at)
-                            <span class="badge bg-success-lt">{{ __('Yes') }}</span>
+                            <span class="badge bg-success text-success-fg">{{ __('Yes') }}</span>
                         @else
-                            <span class="badge bg-danger-lt">{{ __('No') }}</span>
+                            <span class="badge bg-danger text-danger-fg">{{ __('No') }}</span>
                         @endif
                     </div>
                 </div>

@@ -111,9 +111,7 @@
                     <div class="filters-header d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">{{ __('Filters') }}</h5>
                         @if (!empty(array_filter($currentFilters)))
-                            <a href="{{ route('website.addons.index') }}" class="btn btn-sm btn-outline-secondary">
-                                {{ __('Clear All') }}
-                            </a>
+                            <a href="{{ route('website.addons.index') }}" class="btn btn-icon btn-outline-secondary"><i class="fas fa-times"></i></a>
                         @endif
                     </div>
 

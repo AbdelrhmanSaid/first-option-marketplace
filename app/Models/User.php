@@ -8,6 +8,7 @@ use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -96,6 +97,33 @@ class User extends Authenticatable implements MustVerifyEmail
     public function publisher(): HasOneThrough
     {
         return $this->hasOneThrough(Publisher::class, PublisherMember::class, 'user_id', 'id', 'id', 'publisher_id');
+    }
+
+    /**
+     * Get the user's addon purchases.
+     */
+    public function userAddons(): HasMany
+    {
+        return $this->hasMany(UserAddon::class);
+    }
+
+    /**
+     * Get the user's active addon purchases.
+     */
+    public function activeAddons(): HasMany
+    {
+        return $this->userAddons()->active()->with('addon');
+    }
+
+    /**
+     * Check if the user owns a specific addon.
+     */
+    public function ownsAddon(Addon $addon): bool
+    {
+        return $this->userAddons()
+            ->where('addon_id', $addon->id)
+            ->active()
+            ->exists();
     }
 
     /**

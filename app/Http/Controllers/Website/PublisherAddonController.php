@@ -37,7 +37,11 @@ class PublisherAddonController extends Controller
             'version' => 'required|string',
             'resource' => 'required|file|mimes:zip,rar,tar,gz,tgz,pdf,msi',
             'instructions' => 'nullable|string',
+            'subscription_type' => 'required|in:one_time,subscription',
             'price' => 'nullable|numeric|min:0',
+            'monthly_price' => 'nullable|numeric|min:0',
+            'quarterly_price' => 'nullable|numeric|min:0',
+            'yearly_price' => 'nullable|numeric|min:0',
             'trial_period' => 'nullable|integer|min:0',
             'youtube_video_url' => 'nullable|url',
             'privacy_policy_url' => 'nullable|url',
@@ -46,6 +50,13 @@ class PublisherAddonController extends Controller
             'tags' => 'nullable|array|max:3',
             'tags.*' => 'string|max:50',
         ]);
+
+        // Validate subscription pricing
+        if ($validated['subscription_type'] === 'subscription') {
+            if (!$validated['monthly_price'] && !$validated['quarterly_price'] && !$validated['yearly_price']) {
+                return back()->withErrors(['subscription_type' => __('At least one subscription price must be set for subscription addons.')])->withInput();
+            }
+        }
 
         if ($request->hasFile('icon')) {
             $validated['icon'] = $this->uploadFile($request->file('icon'), 'addons-icons');
@@ -61,7 +72,7 @@ class PublisherAddonController extends Controller
 
         $addon->versions()->create([
             'version' => $request->version,
-            'resource' => $request->resource,
+            'resource' => $validated['resource'],
         ]);
 
         return $this->success(__('Add-on created successfully'), 'website.publishers.dashboard.index', 'addons');
@@ -97,7 +108,11 @@ class PublisherAddonController extends Controller
             'discipline_id' => 'required|exists:disciplines,id',
             'os' => 'required|in:' . implode(',', array_keys(OS::toArray())),
             'instructions' => 'nullable|string',
+            'subscription_type' => 'required|in:one_time,subscription',
             'price' => 'nullable|numeric|min:0',
+            'monthly_price' => 'nullable|numeric|min:0',
+            'quarterly_price' => 'nullable|numeric|min:0',
+            'yearly_price' => 'nullable|numeric|min:0',
             'trial_period' => 'nullable|integer|min:0',
             'youtube_video_url' => 'nullable|url',
             'privacy_policy_url' => 'nullable|url',
@@ -106,6 +121,13 @@ class PublisherAddonController extends Controller
             'tags' => 'nullable|array|max:3',
             'tags.*' => 'string|max:50',
         ]);
+
+        // Validate subscription pricing
+        if ($validated['subscription_type'] === 'subscription') {
+            if (!$validated['monthly_price'] && !$validated['quarterly_price'] && !$validated['yearly_price']) {
+                return back()->withErrors(['subscription_type' => __('At least one subscription price must be set for subscription addons.')])->withInput();
+            }
+        }
 
         if ($request->hasFile('icon')) {
             $validated['icon'] = $this->uploadFile($request->file('icon'), 'addons-icons');
