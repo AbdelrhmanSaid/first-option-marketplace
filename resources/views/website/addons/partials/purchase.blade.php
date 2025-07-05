@@ -18,16 +18,29 @@
         </div>
 
         <div>
-            @if ($addon->price)
-                <button class="btn btn-primary w-100">
-                    <i class="fas fa-shopping-cart me-2"></i>
-                    {{ __('Purchase Now') }}
-                </button>
-            @else
-                <button class="btn btn-primary w-100">
+            @if (current_user()->hasActiveSubscription($addon))
+                <a class="btn btn-primary w-100"
+                    href="{{ route('website.subscriptions.download', current_user()->subscriptions()->where('addon_id', $addon->id)->first()) }}">
                     <i class="fas fa-download me-2"></i>
-                    {{ __('Download Free') }}
-                </button>
+                    {{ __('Download') }}
+                </a>
+
+                <p class="text-muted small m-0 mt-2">
+                    {{ __('You have an active subscription for this addon.') }}
+                </p>
+            @else
+                <a class="btn btn-primary w-100" href="{{ route('website.subscriptions.create', $addon) }}">
+                    @if ($addon->price && $addon->trial_period)
+                        <i class="fas fa-play me-2"></i>
+                        {{ __('Start Trial') }}
+                    @elseif ($addon->price)
+                        <i class="fas fa-shopping-cart me-2"></i>
+                        {{ __('Purchase Now') }}
+                    @else
+                        <i class="fas fa-download me-2"></i>
+                        {{ __('Download Free') }}
+                    @endif
+                </a>
             @endif
         </div>
     </div>

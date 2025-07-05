@@ -61,7 +61,7 @@ class PublisherAddonController extends Controller
 
         $addon->versions()->create([
             'version' => $request->version,
-            'resource' => $request->resource,
+            'resource' => $validated['resource'],
         ]);
 
         return $this->success(__('Add-on created successfully'), 'website.publishers.dashboard.index', 'addons');

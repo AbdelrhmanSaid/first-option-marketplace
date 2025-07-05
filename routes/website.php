@@ -22,6 +22,15 @@ Route::resource('addons', \App\Http\Controllers\Website\AddonController::class)-
 Route::middleware('auth:users')->group(function () {
     Route::get('profile', [\App\Http\Controllers\Website\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [\App\Http\Controllers\Website\ProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('subscriptions', [\App\Http\Controllers\Website\SubscriptionController::class, 'index'])->name('subscriptions.index');
+    Route::get('subscriptions/{subscription}', [\App\Http\Controllers\Website\SubscriptionController::class, 'show'])->name('subscriptions.show');
+    Route::get('subscribe/{addon}', [\App\Http\Controllers\Website\SubscriptionController::class, 'create'])->name('subscriptions.create');
+    Route::post('subscribe/{addon}', [\App\Http\Controllers\Website\SubscriptionController::class, 'store'])->name('subscriptions.store');
+    Route::get('subscribe/{subscription}/return', [\App\Http\Controllers\Website\SubscriptionController::class, 'return'])->name('subscriptions.return');
+    Route::get('subscribe/{subscription}/download', [\App\Http\Controllers\Website\SubscriptionController::class, 'download'])->name('subscriptions.download');
+    Route::post('subscribe/{subscription}/cancel', [\App\Http\Controllers\Website\SubscriptionController::class, 'cancel'])->name('subscriptions.cancel');
+    Route::post('subscribe/{subscription}/renew', [\App\Http\Controllers\Website\SubscriptionController::class, 'renew'])->name('subscriptions.renew');
 });
 
 Route::prefix('publishers/dashboard')->as('publishers.dashboard.')->middleware(['auth:users', \App\Http\Middleware\Publisher::class])->group(function () {

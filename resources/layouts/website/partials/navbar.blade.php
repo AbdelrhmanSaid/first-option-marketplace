@@ -14,26 +14,22 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a href="{{ route('website.addons.index') }}" class="nav-link">
-                        <span class="nav-link-icon"><i class="fa fa-puzzle-piece"></i></span>
                         <span class="nav-link-title">{{ __('Addons') }}</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="{{ route('website.publishers.index') }}" class="nav-link">
-                        <span class="nav-link-icon"><i class="fa fa-building"></i></span>
                         <span class="nav-link-title">{{ __('Publishers') }}</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="#" data-theme="dark" class="nav-link hide-theme-dark">
-                        <span class="nav-link-icon"><i class="fa fa-moon"></i></span>
                         <span class="nav-link-title">{{ __('Dark mode') }}</span>
                     </a>
 
                     <a href="#" data-theme="light" class="nav-link hide-theme-light">
-                        <span class="nav-link-icon"><i class="fa fa-sun"></i></span>
                         <span class="nav-link-title">{{ __('Light mode') }}</span>
                     </a>
                 </li>
@@ -41,7 +37,6 @@
                 @if (count(setting('website_locales')) > 1)
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <span class="nav-link-icon"><i class="fa fa-language"></i></span>
                             <span class="nav-link-title">{{ config('app.locales.' . app()->getLocale()) }}</span>
                         </a>
 
@@ -55,9 +50,14 @@
                     </li>
                 @endif
 
+                <li class="nav-item">
+                    <a href="{{ route('website.subscriptions.index') }}" class="nav-link">
+                        <span class="nav-link-title">{{ __('Subscriptions') }}</span>
+                    </a>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        <span class="nav-link-icon"><i class="fa fa-user"></i></span>
                         <span class="nav-link-title">
                             {{ auth('users')->check() ? current_user()->full_name : __('Account') }}
                         </span>
