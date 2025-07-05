@@ -1,6 +1,6 @@
 <section class="py-5">
     <div class="container py-5">
-        <div class="row align-items-center">
+        <div class="row gy-5 align-items-center">
             <div class="col-lg-8">
                 <h3 class="mb-2">{{ __('Ready to supercharge your Autodesk workflow?') }}</h3>
                 <p class="mb-0 lead">
