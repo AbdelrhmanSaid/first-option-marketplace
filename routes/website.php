@@ -33,7 +33,6 @@ Route::middleware('auth:users')->group(function () {
     Route::post('subscribe/{subscription}/renew', [\App\Http\Controllers\Website\SubscriptionController::class, 'renew'])->name('subscriptions.renew');
     Route::post('rate/{addon}', [\App\Http\Controllers\Website\AddonRateController::class, 'store'])->name('rates.store');
     Route::put('rate/{addon}', [\App\Http\Controllers\Website\AddonRateController::class, 'update'])->name('rates.update');
-    Route::delete('rate/{addon}', [\App\Http\Controllers\Website\AddonRateController::class, 'destroy'])->name('rates.destroy');
 });
 
 Route::prefix('publishers/dashboard')->as('publishers.dashboard.')->middleware(['auth:users', \App\Http\Middleware\Publisher::class])->group(function () {
@@ -41,6 +40,10 @@ Route::prefix('publishers/dashboard')->as('publishers.dashboard.')->middleware([
     Route::post('members', \App\Http\Controllers\Website\AddPublisherMemberController::class)->name('members.add');
     Route::delete('members/{publisherMember}', \App\Http\Controllers\Website\RemovePublisherMemberController::class)->name('members.remove');
     Route::put('settings', \App\Http\Controllers\Website\UpdatePublisherSettingsController::class)->name('settings.update');
+
+    // Addon approval/decline routes
+    Route::patch('feedbacks/{addonRate}/approve', [\App\Http\Controllers\Website\PublisherAddonRateController::class, 'approve'])->name('feedbacks.approve');
+    Route::patch('feedbacks/{addonRate}/decline', [\App\Http\Controllers\Website\PublisherAddonRateController::class, 'decline'])->name('feedbacks.decline');
 
     Route::resource('addons', \App\Http\Controllers\Website\PublisherAddonController::class)->only(['create', 'store', 'edit', 'update']);
 });

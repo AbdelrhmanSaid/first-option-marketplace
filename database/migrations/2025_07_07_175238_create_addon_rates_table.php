@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('rate');
             $table->text('comment')->nullable();
             $table->text('reply')->nullable();
-            $table->boolean('is_approved')->default(false);
+            $table->boolean('is_approved')->nullable();
             $table->timestamps();
         });
     }

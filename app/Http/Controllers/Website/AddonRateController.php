@@ -23,6 +23,7 @@ class AddonRateController extends Controller
 
         $data['user_id'] = current_user()->id;
         $data['addon_id'] = $addon->id;
+        $data['is_approved'] = null;
 
         $rate = AddonRate::updateOrCreate(
             ['addon_id' => $addon->id, 'user_id' => current_user()->id],
