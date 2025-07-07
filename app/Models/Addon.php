@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
+use App\Models\AddonRate;
 
 class Addon extends Model
 {
@@ -125,6 +126,14 @@ class Addon extends Model
     public function versions(): HasMany
     {
         return $this->hasMany(AddonVersion::class);
+    }
+
+    /**
+     * Get the rates for the addon.
+     */
+    public function rates(): HasMany
+    {
+        return $this->hasMany(AddonRate::class);
     }
 
     /**

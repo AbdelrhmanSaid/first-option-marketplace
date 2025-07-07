@@ -31,6 +31,9 @@ Route::middleware('auth:users')->group(function () {
     Route::get('subscribe/{subscription}/download', [\App\Http\Controllers\Website\SubscriptionController::class, 'download'])->name('subscriptions.download');
     Route::post('subscribe/{subscription}/cancel', [\App\Http\Controllers\Website\SubscriptionController::class, 'cancel'])->name('subscriptions.cancel');
     Route::post('subscribe/{subscription}/renew', [\App\Http\Controllers\Website\SubscriptionController::class, 'renew'])->name('subscriptions.renew');
+    Route::post('rate/{addon}', [\App\Http\Controllers\Website\AddonRateController::class, 'store'])->name('rates.store');
+    Route::put('rate/{addon}', [\App\Http\Controllers\Website\AddonRateController::class, 'update'])->name('rates.update');
+    Route::delete('rate/{addon}', [\App\Http\Controllers\Website\AddonRateController::class, 'destroy'])->name('rates.destroy');
 });
 
 Route::prefix('publishers/dashboard')->as('publishers.dashboard.')->middleware(['auth:users', \App\Http\Middleware\Publisher::class])->group(function () {

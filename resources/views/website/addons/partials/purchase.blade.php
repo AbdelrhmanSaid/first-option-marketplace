@@ -18,7 +18,7 @@
         </div>
 
         <div>
-            @if (current_user()->hasActiveSubscription($addon))
+            @if (current_user()?->hasActiveSubscription($addon))
                 <a class="btn btn-primary w-100"
                     href="{{ route('website.subscriptions.download', current_user()->subscriptions()->where('addon_id', $addon->id)->first()) }}">
                     <i class="fas fa-download me-2"></i>

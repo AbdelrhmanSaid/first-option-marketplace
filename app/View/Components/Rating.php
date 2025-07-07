@@ -34,8 +34,10 @@ class Rating extends Component
         $this->id ??= uniqid('rating-');
         $this->size = is_numeric($this->size) ? $this->size . 'px' : $this->size;
 
-        return view($this->view, [
-            'required' => str_contains($this->attributes->get('validation') ?: '', 'required'),
-        ]);
+        return function (): View {
+            return view($this->view, [
+                'required' => str_contains($this->attributes->get('validation') ?: '', 'required'),
+            ]);
+        };
     }
 }

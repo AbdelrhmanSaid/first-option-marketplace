@@ -142,6 +142,8 @@ class AddonController extends Controller
      */
     public function show(Addon $addon)
     {
+        $addon->load(['publisher', 'rates.user']);
+
         return view('website.addons.show', [
             'addon' => $addon,
         ]);
