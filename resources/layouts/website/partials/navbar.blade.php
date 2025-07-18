@@ -50,12 +50,6 @@
                     </li>
                 @endif
 
-                <li class="nav-item">
-                    <a href="{{ route('website.subscriptions.index') }}" class="nav-link">
-                        <span class="nav-link-title">{{ __('Subscriptions') }}</span>
-                    </a>
-                </li>
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                         <span class="nav-link-title">
@@ -71,6 +65,12 @@
 
                             <a href="#" class="dropdown-item" onclick="event.preventDefault(); $('#logout').submit()">
                                 <span class="dropdown-item-title">{{ __('Logout') }}</span>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a href="{{ route('website.subscriptions.index') }}" class="dropdown-item">
+                                <span class="dropdown-item-title">{{ __('Subscriptions') }}</span>
                             </a>
 
                             <div class="dropdown-divider"></div>

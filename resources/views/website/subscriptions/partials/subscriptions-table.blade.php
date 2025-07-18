@@ -75,11 +75,15 @@
 @push('scripts')
     <script>
         function cancelSubscription(id) {
-            warnBeforeAction(() => formRequest('{{ route('website.subscriptions.cancel', $subscription) }}'));
+            const endpoint = '{{ route('website.subscriptions.cancel', ':id') }}';
+
+            warnBeforeAction(() => formRequest(endpoint.replace(':id', id)));
         }
 
         function renewSubscription(id) {
-            warnBeforeAction(() => formRequest('{{ route('website.subscriptions.renew', $subscription) }}'));
+            const endpoint = '{{ route('website.subscriptions.renew', ':id') }}';
+
+            warnBeforeAction(() => formRequest(endpoint.replace(':id', id)));
         }
     </script>
 @endpush

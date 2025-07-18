@@ -40,9 +40,9 @@
                         {{ $userRate ? __('Update') : __('Submit') }}
                     </button>
                 </x-form>
-            @endif
 
-            <hr class="my-4" />
+                <hr class="my-4" />
+            @endif
         @endauth
 
         {{-- Ratings List --}}
@@ -65,7 +65,7 @@
                 <p class="mb-0 text-muted">{{ $rate->comment ?? __('No comment yet.') }}</p>
             </div>
         @empty
-            <x-empty :title="__('No ratings yet')" icon="fas fa-star" />
+            <x-empty class="border-0" :title="__('No ratings yet')" icon="fas fa-star" />
         @endforelse
     </div>
 </div>
