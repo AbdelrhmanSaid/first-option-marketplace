@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Website;
 
-use App\Http\Controllers\Website\Controller;
 use App\Models\AddonRate;
 
 class PublisherAddonRateController extends Controller
