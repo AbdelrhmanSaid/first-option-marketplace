@@ -51,7 +51,7 @@ class SubscriptionController extends Controller
             $endDate = now()->addDays($addon->trial_period);
         } else {
             $startDate = now();
-            $endDate = now()->addMonths($frequency);
+            $endDate = now()->addMonths(intval($frequency));
         }
 
         $subscription = Subscription::create([
